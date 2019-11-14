@@ -1,0 +1,17 @@
+
+the interface to port A of the DUART is realisied in
+basic/io_duart.h. There are two iobuf structures, rdioin and rdioout.
+rdioout can be written with the function rdioput(char), rdioin can be 
+read by using cahr rdioget(). The isr writing to rdioin can be enabeled by
+calling rdio_enable_rx() and disabeled by calling rdio_disable_rx().
+
+NOTE: These functions do not set the output ports on the DUART to
+enable/disable the receiver on the RadioMetrix module. These have to be
+handeled specially, since enabeling both rx and tx enables the test mode
+of the module, feeding back the output to the input. There are inline
+functions in rdio.h which control the output bits and allow to read the input
+bit connected to the CD output.
+
+NOTE2: See NOTE. Using the test mode of the module might be a nice way to 
+detect its presence.
+

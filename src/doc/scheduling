@@ -1,0 +1,29 @@
+Scheduling in Cubeos
+
+Cubeos is a multithreaded, but not multitasking os. 
+
+There is a static process table, defined in basic/schedule.h
+
+Slots in the table are allocated by assigning a value different from
+STATE_EMPTY into the state field.
+
+At the moment, Scheduling is round-robin, the scheduler just starts the
+next thread that is STATE_READY.
+
+Threads will be automatically preempted by the timer interrupt. This
+can be changed by assigning the thread a higher interrupt priority
+than the timer interrupt or by calling disable(). This should only be used
+to generate atomic actions.
+
+Threads can be cooperative by just calling the scheduler themselves.
+
+Threads get created by calling create(void * function). At the moment,
+function has to be of type void function(void).
+
+IPC:
+
+signals: singnal sending works, but reception is yet to be implemented
+with the exeption of SIGKILL.
+
+message passing has yedt to be implemented.
+

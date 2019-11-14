@@ -1,0 +1,118 @@
+-11.4.99
+	tested libc. not yet threadsafe. 
+
+	made drivers
+	drivers/tpu
+	drivers/i2c, just code of i2ctest with changed semaphores.
+	
+	splitted global_def.h into global_def.h (asm-compat)
+	and cubeos.h: 
+	includes global_def.h
+	contains read&wirte macros
+	contains semaphores & mutexes
+
+	made semaphores posix-compatible 
+	sem_signal as equivalent to sem_post for thomas
+
+	
+-29.4.
+
+	new: drivers/sai.h/c
+	     drivers/sai_cube.h/c
+	     and implementation for TPU PAC and PWM. Works.
+
+	new: enable() and disable() for interrupts.
+	     used in io_duart.c and i2c.c
+	new: ptable[x].irq to save irq level for threads.
+	     init to 0x2...
+
+	new: basic/list.h
+	new: basic/iobuf.h
+
+
+-4.5.
+	new: basic/rdio.h
+             inlined functions for rx control and iobuf management
+	changed: basic/cubeos.h inlined enable() and disable() functions
+	         basic/cubeos.h now #includes sys_var.h and schedule.h
+        new: support for radio link interface in basic/io_duart.c
+	changed: basic/io_duart.c init now uses iobuf's functions
+	fixed: bug in io_duart.c that hung cubeos by forgetting to enable()
+	interrupts after detecting a kernel output buffer overflow
+
+-6.5
+	new: sai support for i2c 
+	i2cc: complex devices which require a control word to be sent first
+	i2ca: simple i2c devices which just respond to read and write
+              on the i2c bus
+	new initialisations for addr[0] to addr[2] for the fuel gauge on
+	i2c b. Should not stay there. Maybe a dynamic allocation scheme
+	based on lists?
+	
+-7.5.
+	cleaned up sai. now, each driver has it's on sai file
+	and sai_cube only uses them.
+
+	wrote sai's documentation
+
+-9.6.
+	found bug in scheduler, libcproblem solved.
+	
+	drivers/icontrol for the qdec motorcoltroller with potential
+	fields (not yet finished)
+
+	generic handler for IVtable basic/ivtab.c
+	handler for TPU irq handlers 
+	driver for qdec in tpud.c/.h
+
+	chanred SAI to use pointers instead of entries struct sai.
+	Dynamic creation of sai_cube's content.
+
+	made test with minimal system without libc
+
+----- release 0.4.0 ---------
+
+fixed sincos.c
+	- new busy indicator while building tables
+
+changed icontrol.c 
+	- icontrol_set now normalized values -10000 to 10000
+	- icontrol_set reversed left channel 
+
+changed icontrol.h 
+	- New KICK_ for third motor
+	- Changed LEFT and RIGHT to reflect usage in old RoboCup Controller
+
+changed Makefile
+	- make clean cleans drivers/icontrol/
+
+changed hardware/tpu.h
+	- changed setCISR and getCISR
+	
+changed make.in
+	- appended .tw as new binary download file
+
+changed tty interface, basic/ttyio.h,.c basic/io_sci.h/.c
+
+New i2c interface below sai for analog and digital i/o
+	Adresses of digital and analog chips are scanned. Chips are inserted
+	in ascending order of adresses and bus numbers into array ad_data
+	and bin_data. see drivers/i2c/digital.[c,h] drivers/i2c/analog.[c,h]
+
+--- 0.4.9
+
+removed minimal test stuff
+
+added netcode in /net/rsm.h 
+	the new netcode has a simple statemachine for reception (/net/rsm.c)
+	and a userlevel transmit that uses the DUART channel A. The 
+	radiomodule is controlled via the rdio.h functions from /basic/rdio.h.
+	At the moment, only broadcast is possible
+
+added support for cube3 (#define for hardware.h)
+
+added support for the cube3 LED into cubeos.h. Does not hurt on cube1.
+
+added softreset() by using external watchdog to reset
+
+added ctrl-c reset trigger on duart channel B 

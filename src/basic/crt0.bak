@@ -1,0 +1,176 @@
+/*
+ * crt0.S -- startup file for m68k-coff
+ */
+
+#include "asm.h"
+#include "global_def.h"
+#include "mc68332.h"
+#include "mc68681.h"
+
+	.title "crt0.S for m68k-coff"
+
+/*
+   ROM/RAM size: 3=64k, 4=128k, 5=256k, 6=512k, 7=1M
+*/
+
+#define ROMTYPE 	4 
+#define RAMTYPE         5
+#define INITSTACK 	0x20000 // Stack location after reset (never used)
+
+/*
+ * Define an empty environment.
+ */
+        .data
+        .align 2
+SYM (environ):
+        .long 0
+
+	.text
+
+/*
+ * set up address where the kernel jumps to
+ */
+
+	.extern SYM(exp_handler)
+	.extern SYM(duart_int)
+	.extern SYM(init_duart)
+
+#include "ivtable.S"
+
+/*
+ * These symbols are defined in C code, so they need to always be
+ * named with SYM because of the difference between object file formats.
+ */
+
+/* These are defined in C code. */
+        .extern SYM(main)
+/*        .extern SYM(exit) */
+/*        .extern SYM(atexit) */
+        .extern SYM(__do_global_dtors)
+	
+/*
+ * set things up so the application will run. This *must* be called start.
+ */
+	
+start:
+	move.b	SIM_SYPCR,d0	//
+	or.b	IMM(6),d0	// bus mon enab, bus mon timeout 16 sys cycles
+	and.b	IMM(0x7f),d0	// disable watchdog
+	move.b	d0,SIM_SYPCR	//
+	move.w	IMM(0x2700),sr	// supv mode, level 7 int mask
+	move.w	IMM(0+ROMTYPE),SIM_CSBARBT	// Rom at 0000
+	move.w	IMM(0x69f0),SIM_CSORBT		// allsorts
+	or.w	IMM(0x4000),SIM_SYNCR	// 16.8MHz clock speed
+clockwait:
+	move.w	SIM_SYNCR,d0	// wait for clock to stabilise
+	cmp.w	IMM(0x7f08),d0	//
+	bne	clockwait	//
+
+	move.w 	IMM(0x42cf),SIM_MCR
+
+	move.w	IMM(0x2fff),SIM_CSPAR0    // cs5 is 8-bit port
+	move.w	IMM(0xffd8),SIM_CSBAR5    // base addr 0xffd800
+	move.w	IMM(0x7ffa),SIM_CSOR5     // config
+
+	move.b	IMM(0),DUART_IMR
+	move.b	IMM(0),DUART_OPCR
+	move.b	IMM(0x2a),DUART_CRA
+	move.b	IMM(0x2a),DUART_CRB
+	move.b	IMM(0x3a),DUART_CRA
+	move.b	IMM(0x3a),DUART_CRB
+	move.b	IMM(0x60),DUART_ACR
+	move.b	IMM(0),DUART_CTUR
+	move.b	IMM(2),DUART_CTLR
+	move.b	DUART_STRTCC,d0
+	move.b	IMM(0xbb),DUART_CSRA
+	move.b	IMM(0xdd),DUART_CSRB
+	move.b	IMM(0x13),DUART_MR1A
+	move.b	IMM(0x13),DUART_MR1B
+	move.b	IMM(7),DUART_MR2A
+	move.b	IMM(7),DUART_MR2B
+	move.b	IMM(0xff),DUART_OPRRST
+	move.b	IMM(5),DUART_CRA
+	move.b	IMM(5),DUART_CRB
+
+duartwait:
+	move.b	DUART_SRB,d0	// wait for duart to finish
+	and.b	IMM(0x4),d0	//
+	beq	duartwait	//
+
+	move.b  IMM(0x2a),DUART_TBB
+	
+	move.l	IMM(IVTABLE),d0   //
+	movec	d0,vbr		  // set vector base register
+
+	move.w  IMM(0x0100),CPURAMCTRL_MCR  // supervisor only
+	move.l  IMM(CPURAM_BASE),d0
+	lsr	IMM(8),d0
+	addi	IMM(1),d0            // enable access to CPURAM
+	move.w	d0,CPURAMCTRL_BAR
+
+/* Copy moverom routine to CPURAM */
+
+	move.l	IMM(moverom-EPROM_BASE),a0
+	move.l	IMM(CPURAM_BASE),a1
+romcopy:
+	move.l	(a0)+,(a1)+
+	cmp.l	IMM(CPURAM_BASE+endmoverom-EPROM_BASE),a0
+	bne	romcopy
+
+/* Switch EPROM base address */
+
+	jmp	CPURAM_BASE		// jump to CPURAM
+moverom:
+	move.w	IMM(EPROM_BASE>>8+ROMTYPE),SIM_CSBARBT //move ROM to EPROM_BASE
+	jmp	endmoverom		    // jump back to ROM
+endmoverom:
+
+/* Set RAM base address to 0 */
+	move.w	IMM(0x2fff),SIM_CSPAR0    // cs5 is 8-bit port
+	move.w  IMM(0x03ff),SIM_CSPAR1    // all others are 16-bit
+	move.w	IMM(0+RAMTYPE),SIM_CSBAR0	  // HI RAM
+	move.w	IMM(0x5c3e),SIM_CSOR0	  	  //
+	move.w	IMM(0+RAMTYPE),SIM_CSBAR1	  // LO RAM
+	move.w	IMM(0x3c3e),SIM_CSOR1	  	  //
+
+/* set up initial stack frame */
+      	movel	IMM(CPURAM_BASE + 0x7fc), sp
+	link	a6, IMM(-8)
+
+/*
+ * call the main routine from the boot monitor to get it going.
+ * main (argc, argv, environ)
+ * we pass argv as a pointer to NULL.
+ */
+
+#ifdef ADD_DTORS
+/* put __do_global_dtors in the atexit list so the destructors get run */
+        movel   IMM (SYM(__do_global_dtors)),(sp)
+        jsr     SYM (atexit)
+#endif
+/*        movel   IMM (__FINI_SECTION__),(sp)
+        jsr     SYM (atexit)
+*/
+        jsr     __INIT_SECTION__
+
+	jsr	SYM(init_duart)
+        pea     0
+        pea     SYM (environ)
+        pea     sp@(4)
+        pea     0
+	move.w	IMM(0x2100),sr	// supv mode, level 1 int mask
+	move.b  IMM(0x2), DUART_IMR // enable duart input interrupt
+	jsr	SYM (main)
+	movel	d0, sp@-
+
+/*
+ * drop down into exit incase the user doesn't. This should drop
+ * control back to the ROM monitor, if there is one. This calls the
+ * exit() from the C library so the C++ tables get cleaned up right.
+ */
+/*        jsr     SYM (exit) */
+
+halt:
+	jmi halt
+
+

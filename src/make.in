@@ -1,0 +1,15 @@
+.SUFFIXES: .dl .bin .coff .c .o .abs .d .tw
+.PRECIOUS: .o .bin .s
+
+#ARCH=/usr/local/bin/m68k-coff-
+ARCH=/opt/misc/m68kgcc/bin/m68k-coff-
+CC=$(ARCH)gcc
+AS=$(ARCH)as
+AR=$(ARCH)ar
+LD=$(ARCH)ld
+RANLIB=$(ARCH)ranlib
+OBJCOPY=$(ARCH)objcopy
+OBJDUMP=$(ARCH)objdump
+LD_OPT=
+CFLAGS=-Wall -mcpu32 -msoft-float 
+SFLAGS=-Wall -mcpu32 -msoft-float 

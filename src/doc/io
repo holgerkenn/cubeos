@@ -1,0 +1,10 @@
+io is currently handeled by io_duart only.
+
+a generic io buffer is implemented in basic/iobuf.h basic/iobuf.c
+
+up 'till now, both ports of the DUART have drivers. Channel B 
+is the console port. Its iobuf is called krnlin and krnlout and is only
+available inside io_duart. Channel A uses struct iobuf rdioin and rdioout
+and two support functions rdioput and rdioget. 
+
+

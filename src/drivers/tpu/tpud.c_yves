@@ -1,0 +1,239 @@
+// problem with this one is pwm gets swamped
+
+
+/* #define AS_FUNCTIONS */
+#include <cubeos.h>
+#include <mc68681.h> /* needed !! */
+#include <tpu.h>
+#include <stdio.h> // should be removed when done debugging sonar
+
+#define WFSR 1000  /* Wait For Service Request TimeOut limit */
+// #define FULLDEBUG
+#include "basetpu.c"
+
+
+
+/////////////////////////////// Sonar stuff ///////////////////////
+#define TRUE (1==1)
+#define FALSE !TRUE
+#define LISTEN_CHANNEL 12
+#define SEND_CHANNEL 3
+#define MODULATE_CHANNEL 2
+#define MAXTIMEOUT 10000
+// It was tested that for 10 cm distance to object timeout went
+// to +- 50, thus the above value should hold pretty well
+#define LEAST_DISTANCE 30
+#define MAX_DISTANCE 60000
+#define MOD_INIT 0
+#define MOD_START_LISTEN  1
+#define MOD_START_SEND  2
+#define MOD_CLOSE 3
+#define MOD_WAIT 4
+#define MOD_DONE  5
+
+char *mod_state_lookup[7]={ "Init","Start Listen","Start
+Send","Wait","Done","Closed","Undefined"};
+unsigned long dum=0;
+unsigned long distance=0;
+unsigned long timeoutCounter=0;
+unsigned long mod_state=MOD_INIT;
+unsigned long retries=0;
+extern void pwmisrWrapper(void);
+extern void ppwaisrWrapper(void);
+
+void cleanupChannel(unsigned char nr)
+{
+setCPR(nr,0);
+clearCIER(nr);
+
+  if(getCISR(MODULATE_CHANNEL)!=0)
+    {
+    // printf("Cleared CISR on %d\r\n",nr);
+     clearCISR(MODULATE_CHANNEL);
+    }
+}
+
+void ppwaisr(void)
+{
+/* This is the isr that will do the actual measurement between the two
+pulses , determining the distance traveled by the sound wave */
+unsigned long result_LW=0,result_UW=0;
+
+	retries++;
+  result_UW=getPAR(LISTEN_CHANNEL,4)&0x00FF;
+  result_UW=0;
+  result_LW=getPAR(LISTEN_CHANNEL,5);
+
+
+  distance=(result_UW<<16)+result_LW;
+
+
+  if(distance < ((long)LEAST_DISTANCE) )
+	{
+	distance=0;
+	return;
+	}
+
+// Stuff below done by fsm
+//  setPAR(MODULATE_CHANNEL,0,0x8E); // force pin low
+//  setHSRR(MODULATE_CHANNEL,0x1); // ask immediate update
+//  setPAR(SEND_CHANNEL,0,0x8E); // force pin low
+//  setHSRR(SEND_CHANNEL,0x1); // ask immediate update
+
+
+printf("Measured %ld=",distance);
+cleanupChannel(LISTEN_CHANNEL);
+// cleanup is important
+}
+
+void pwmisr(void)
+{
+/* This is a pwm isr on the MODULATE_CHANNEL!!! The modulate is actually
+used as an easy way to shut off the pulse-generating SEND_CHANNEL after
+200 ms. This is needed because interrupts happen on low-to-high
+transitions, thus we cannot shut off the SEND_CHANNEL in time if we were
+to put the isr there. */
+
+switch(mod_state)
+{
+  case MOD_INIT:
+	mod_state=MOD_START_LISTEN; 
+	break;
+  case MOD_START_LISTEN : 
+	setCPR(LISTEN_CHANNEL,3); // high priority 
+	mod_state=MOD_START_SEND;
+	break;
+  case MOD_START_SEND:
+	setCPR(SEND_CHANNEL,2);
+	mod_state=MOD_CLOSE;
+ 	break;
+  case MOD_CLOSE:
+
+ 
+	setPAR(SEND_CHANNEL,2,0); // high time zero
+	setPAR(MODULATE_CHANNEL,2,0); // high time zero
+	setPAR(SEND_CHANNEL,3,30000); // long period
+	setPAR(MODULATE_CHANNEL,3,30000); // long period
+	setHSRR(SEND_CHANNEL,0x1); // ask immediate update
+	setHSRR(MODULATE_CHANNEL,0x1); // ask immediate update
+	mod_state=MOD_DONE;
+	setCIER(MODULATE_CHANNEL,0x0); // dont listen	
+	break;
+  case MOD_DONE:
+	printf("Z!");
+	setCIER(MODULATE_CHANNEL,0x0);
+	break;
+  default:
+	printf("Default on modstate!");
+	break;
+}
+// bug fix code follows, I don't like it
+
+return;
+}
+
+
+int TPU_MeasureDistance()
+{
+unsigned long ivtab;
+
+distance=0;
+mod_state=MOD_INIT;
+retries=0;
+
+// Set up interrupt vector table & mask
+asm("movec %vbr,%d0");
+asm("movel %%d0,%0":"=m"(ivtab));
+*(unsigned long *)(ivtab+0x80*4+LISTEN_CHANNEL*4)
+	=(unsigned long)&ppwaisrWrapper;
+
+*(unsigned long *)(ivtab+0x80*4+MODULATE_CHANNEL*4)
+	=(unsigned long)&pwmisrWrapper;
+
+
+
+// First let's configure the SEND_CHANNEL to send a 12ms pulse (=40 Khz)
+
+  while(getHSRR(SEND_CHANNEL)!=0);
+  setCPR(SEND_CHANNEL,0);
+  setCFSR(SEND_CHANNEL,9);     /* 9 = PWM */
+  setPAR(SEND_CHANNEL,0,0x8c); /* Time Base TCR1, toggle on match */
+  setPAR(SEND_CHANNEL,2,12);    /* High Time */
+  setPAR(SEND_CHANNEL,3,24);   /* Period */
+  setCIER(SEND_CHANNEL,0);     /* Interrupts disabled */
+  setHSRR(SEND_CHANNEL,2);     /* Request Init */
+
+// Now let's configure the MODULATE to allow one pulse to go through
+  while(getHSRR(MODULATE_CHANNEL)!=0);
+  setCPR(MODULATE_CHANNEL,0);
+  setCFSR(MODULATE_CHANNEL,9);     /* 9 = PWM */
+  setPAR(MODULATE_CHANNEL,0,0x8c); /* Time Base TCR1, toggle on match */
+  setPAR(MODULATE_CHANNEL,2,200);    /* High Time */
+  setPAR(MODULATE_CHANNEL,3,20000);   /* Period */
+  setCIER(MODULATE_CHANNEL,0x1);     /* Interrupts ENABLED !!! */
+  setHSRR(MODULATE_CHANNEL,2);     /* Request Init */
+  if(getCISR(MODULATE_CHANNEL)!=0)
+    {
+     printf("Pm");
+     clearCISR(MODULATE_CHANNEL);
+    }
+
+// Lastly, let's configure the PPWA to react to the distance between
+// the original pulse and its echo
+
+  while(getHSRR(LISTEN_CHANNEL)!=0);
+  setCPR(LISTEN_CHANNEL,0);
+  setCFSR(LISTEN_CHANNEL,0xF); /* F = PPWA */
+  setHSQR(LISTEN_CHANNEL,0x2); /* 24 bit pulse width mode, no links */
+  setPAR(LISTEN_CHANNEL,0,0x07); /* capture/match tcr1,pulse width acc */
+  setPAR(LISTEN_CHANNEL,1,0x0100); /* count only one pulse width*/
+  setPAR(LISTEN_CHANNEL,4,0xFF00); 
+/* set accum to ff, and zero out upper 8 bits*/
+  setPAR(LISTEN_CHANNEL,5,0x0000);
+        /* zero out lower bits too. Not needed according to tpu manual but
+         allows us to detect if something's been measured. */
+
+  if(getCISR(LISTEN_CHANNEL)!=0)
+    {
+     printf("Pl");
+     clearCISR(LISTEN_CHANNEL);
+    }
+  setCIER(LISTEN_CHANNEL,0x1); // listen to interrupts
+  setHSRR(LISTEN_CHANNEL,2);     /* Request Init */
+
+
+// QUESTION : How to ensure that modulating signal gets high before
+// the sendchannel activates?
+
+//  setCPR(SEND_CHANNEL,2);      /* Activate with middle priority */
+  setCPR(MODULATE_CHANNEL,2);      /* Activate with middle priority */
+//  setCPR(LISTEN_CHANNEL,2);      /* Activate with middle priority */
+
+
+timeoutCounter=0;
+
+while((distance==0) && (timeoutCounter < MAXTIMEOUT))
+	timeoutCounter++;
+ 
+if(distance> (long)MAX_DISTANCE) { printf("Max"); distance=0; }
+
+if(timeoutCounter>=MAXTIMEOUT) printf("T");
+
+// cleanup if pwm interrupt failed
+
+if(mod_state!=MOD_DONE)
+{
+printf("Pwm: %s",mod_state_lookup[mod_state]);
+cleanupChannel(MODULATE_CHANNEL);
+}
+
+ cleanupChannel(LISTEN_CHANNEL); // only needed if ppwa not ok triggered
+ cleanupChannel(SEND_CHANNEL);   // disabled by fsm, but not cleaned
+ cleanupChannel(MODULATE_CHANNEL);// cleaned by fsm
+
+printf("R%ld ",retries);
+return(distance);
+}
+
+
+

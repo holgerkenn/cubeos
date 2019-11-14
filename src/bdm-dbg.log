@@ -1,0 +1,2035 @@
+GDB: bdm_sensecable_interactive: arg <on> from_tty 0
+GDB: bdm_clear_breakpoints
+GDB: bdm_setdelay_interactive: arg <500> from_tty 0
+GDB: bdm_set_debug_interactive: arg <on> from_tty 0
+Setting Debug to 1
+GDB: bdm_set_debug_driver_interactive: arg <0> from_tty 0
+GDB: bdm_get_status_int arg <(null)> from_tty <0> stat 4 Connected PowerOK Frozen 
+GDB: bdm_fetch_register 17
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0 = (hi 0 lo 0)
+GDB: HW Breakpoint entered
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0 = (hi 0 lo 0)
+GDB: HW Breakpoint entered
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_get_status_int arg <(null)> from_tty <1> stat 4 Connected PowerOK Frozen 
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0 = (hi 0 lo 0)
+GDB: HW Breakpoint entered
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_get_status_int arg <(null)> from_tty <1> stat 4 Connected PowerOK Frozen 
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0 = (hi 0 lo 0)
+GDB: HW Breakpoint entered
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_create_inferior: execfile /projects/cubeos/src/init.coff args=, env=USERNAME=root
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /projects/cubeos/src/init.coff
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /projects/cubeos/src/init.coff suffix 1
+	no macro file found
+bdmlib_load_section:
+	section .text index 0
+	flags 0x223 raw_size 79100 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_write_block size 0x200 to adr 0
+bdmlib_write_block size 0x200 to adr 0x200
+bdmlib_write_block size 0x200 to adr 0x400
+bdmlib_write_block size 0x200 to adr 0x600
+bdmlib_write_block size 0x200 to adr 0x800
+bdmlib_write_block size 0x200 to adr 0xa00
+bdmlib_write_block size 0x200 to adr 0xc00
+bdmlib_write_block size 0x200 to adr 0xe00
+bdmlib_write_block size 0x200 to adr 0x1000
+bdmlib_write_block size 0x200 to adr 0x1200
+bdmlib_write_block size 0x200 to adr 0x1400
+bdmlib_write_block size 0x200 to adr 0x1600
+bdmlib_write_block size 0x200 to adr 0x1800
+bdmlib_write_block size 0x200 to adr 0x1a00
+bdmlib_write_block size 0x200 to adr 0x1c00
+bdmlib_write_block size 0x200 to adr 0x1e00
+bdmlib_write_block size 0x200 to adr 0x2000
+bdmlib_write_block size 0x200 to adr 0x2200
+bdmlib_write_block size 0x200 to adr 0x2400
+bdmlib_write_block size 0x200 to adr 0x2600
+bdmlib_write_block size 0x200 to adr 0x2800
+bdmlib_write_block size 0x200 to adr 0x2a00
+bdmlib_write_block size 0x200 to adr 0x2c00
+bdmlib_write_block size 0x200 to adr 0x2e00
+bdmlib_write_block size 0x200 to adr 0x3000
+bdmlib_write_block size 0x200 to adr 0x3200
+bdmlib_write_block size 0x200 to adr 0x3400
+bdmlib_write_block size 0x200 to adr 0x3600
+bdmlib_write_block size 0x200 to adr 0x3800
+bdmlib_write_block size 0x200 to adr 0x3a00
+bdmlib_write_block size 0x200 to adr 0x3c00
+bdmlib_write_block size 0x200 to adr 0x3e00
+bdmlib_write_block size 0x200 to adr 0x4000
+bdmlib_write_block size 0x200 to adr 0x4200
+bdmlib_write_block size 0x200 to adr 0x4400
+bdmlib_write_block size 0x200 to adr 0x4600
+bdmlib_write_block size 0x200 to adr 0x4800
+bdmlib_write_block size 0x200 to adr 0x4a00
+bdmlib_write_block size 0x200 to adr 0x4c00
+bdmlib_write_block size 0x200 to adr 0x4e00
+bdmlib_write_block size 0x200 to adr 0x5000
+bdmlib_write_block size 0x200 to adr 0x5200
+bdmlib_write_block size 0x200 to adr 0x5400
+bdmlib_write_block size 0x200 to adr 0x5600
+bdmlib_write_block size 0x200 to adr 0x5800
+bdmlib_write_block size 0x200 to adr 0x5a00
+bdmlib_write_block size 0x200 to adr 0x5c00
+bdmlib_write_block size 0x200 to adr 0x5e00
+bdmlib_write_block size 0x200 to adr 0x6000
+bdmlib_write_block size 0x200 to adr 0x6200
+bdmlib_write_block size 0x200 to adr 0x6400
+bdmlib_write_block size 0x200 to adr 0x6600
+bdmlib_write_block size 0x200 to adr 0x6800
+bdmlib_write_block size 0x200 to adr 0x6a00
+bdmlib_write_block size 0x200 to adr 0x6c00
+bdmlib_write_block size 0x200 to adr 0x6e00
+bdmlib_write_block size 0x200 to adr 0x7000
+bdmlib_write_block size 0x200 to adr 0x7200
+bdmlib_write_block size 0x200 to adr 0x7400
+bdmlib_write_block size 0x200 to adr 0x7600
+bdmlib_write_block size 0x200 to adr 0x7800
+bdmlib_write_block size 0x200 to adr 0x7a00
+bdmlib_write_block size 0x200 to adr 0x7c00
+bdmlib_write_block size 0x200 to adr 0x7e00
+bdmlib_write_block size 0x200 to adr 0x8000
+bdmlib_write_block size 0x200 to adr 0x8200
+bdmlib_write_block size 0x200 to adr 0x8400
+bdmlib_write_block size 0x200 to adr 0x8600
+bdmlib_write_block size 0x200 to adr 0x8800
+bdmlib_write_block size 0x200 to adr 0x8a00
+bdmlib_write_block size 0x200 to adr 0x8c00
+bdmlib_write_block size 0x200 to adr 0x8e00
+bdmlib_write_block size 0x200 to adr 0x9000
+bdmlib_write_block size 0x200 to adr 0x9200
+bdmlib_write_block size 0x200 to adr 0x9400
+bdmlib_write_block size 0x200 to adr 0x9600
+bdmlib_write_block size 0x200 to adr 0x9800
+bdmlib_write_block size 0x200 to adr 0x9a00
+bdmlib_write_block size 0x200 to adr 0x9c00
+bdmlib_write_block size 0x200 to adr 0x9e00
+bdmlib_write_block size 0x200 to adr 0xa000
+bdmlib_write_block size 0x200 to adr 0xa200
+bdmlib_write_block size 0x200 to adr 0xa400
+bdmlib_write_block size 0x200 to adr 0xa600
+bdmlib_write_block size 0x200 to adr 0xa800
+bdmlib_write_block size 0x200 to adr 0xaa00
+bdmlib_write_block size 0x200 to adr 0xac00
+bdmlib_write_block size 0x200 to adr 0xae00
+bdmlib_write_block size 0x200 to adr 0xb000
+bdmlib_write_block size 0x200 to adr 0xb200
+bdmlib_write_block size 0x200 to adr 0xb400
+bdmlib_write_block size 0x200 to adr 0xb600
+bdmlib_write_block size 0x200 to adr 0xb800
+bdmlib_write_block size 0x200 to adr 0xba00
+bdmlib_write_block size 0x200 to adr 0xbc00
+bdmlib_write_block size 0x200 to adr 0xbe00
+bdmlib_write_block size 0x200 to adr 0xc000
+bdmlib_write_block size 0x200 to adr 0xc200
+bdmlib_write_block size 0x200 to adr 0xc400
+bdmlib_write_block size 0x200 to adr 0xc600
+bdmlib_write_block size 0x200 to adr 0xc800
+bdmlib_write_block size 0x200 to adr 0xca00
+bdmlib_write_block size 0x200 to adr 0xcc00
+bdmlib_write_block size 0x200 to adr 0xce00
+bdmlib_write_block size 0x200 to adr 0xd000
+bdmlib_write_block size 0x200 to adr 0xd200
+bdmlib_write_block size 0x200 to adr 0xd400
+bdmlib_write_block size 0x200 to adr 0xd600
+bdmlib_write_block size 0x200 to adr 0xd800
+bdmlib_write_block size 0x200 to adr 0xda00
+bdmlib_write_block size 0x200 to adr 0xdc00
+bdmlib_write_block size 0x200 to adr 0xde00
+bdmlib_write_block size 0x200 to adr 0xe000
+bdmlib_write_block size 0x200 to adr 0xe200
+bdmlib_write_block size 0x200 to adr 0xe400
+bdmlib_write_block size 0x200 to adr 0xe600
+bdmlib_write_block size 0x200 to adr 0xe800
+bdmlib_write_block size 0x200 to adr 0xea00
+bdmlib_write_block size 0x200 to adr 0xec00
+bdmlib_write_block size 0x200 to adr 0xee00
+bdmlib_write_block size 0x200 to adr 0xf000
+bdmlib_write_block size 0x200 to adr 0xf200
+bdmlib_write_block size 0x200 to adr 0xf400
+bdmlib_write_block size 0x200 to adr 0xf600
+bdmlib_write_block size 0x200 to adr 0xf800
+bdmlib_write_block size 0x200 to adr 0xfa00
+bdmlib_write_block size 0x200 to adr 0xfc00
+bdmlib_write_block size 0x200 to adr 0xfe00
+bdmlib_write_block size 0x200 to adr 0x10000
+bdmlib_write_block size 0x200 to adr 0x10200
+bdmlib_write_block size 0x200 to adr 0x10400
+bdmlib_write_block size 0x200 to adr 0x10600
+bdmlib_write_block size 0x200 to adr 0x10800
+bdmlib_write_block size 0x200 to adr 0x10a00
+bdmlib_write_block size 0x200 to adr 0x10c00
+bdmlib_write_block size 0x200 to adr 0x10e00
+bdmlib_write_block size 0x200 to adr 0x11000
+bdmlib_write_block size 0x200 to adr 0x11200
+bdmlib_write_block size 0x200 to adr 0x11400
+bdmlib_write_block size 0x200 to adr 0x11600
+bdmlib_write_block size 0x200 to adr 0x11800
+bdmlib_write_block size 0x200 to adr 0x11a00
+bdmlib_write_block size 0x200 to adr 0x11c00
+bdmlib_write_block size 0x200 to adr 0x11e00
+bdmlib_write_block size 0x200 to adr 0x12000
+bdmlib_write_block size 0x200 to adr 0x12200
+bdmlib_write_block size 0x200 to adr 0x12400
+bdmlib_write_block size 0x200 to adr 0x12600
+bdmlib_write_block size 0x200 to adr 0x12800
+bdmlib_write_block size 0x200 to adr 0x12a00
+bdmlib_write_block size 0x200 to adr 0x12c00
+bdmlib_write_block size 0x200 to adr 0x12e00
+bdmlib_write_block size 0x200 to adr 0x13000
+bdmlib_write_block size 0x200 to adr 0x13200
+bdmlib_write_block size 0xfc to adr 0x13400
+bdmlib_load_section:
+	section .data index 1
+	flags 0x243 raw_size 2796 cooked_size 0
+	vma 0x134fc lma 0x134fc output_offset 0
+bdmlib_write_block size 0x200 to adr 0x134fc
+bdmlib_write_block size 0x200 to adr 0x136fc
+bdmlib_write_block size 0x200 to adr 0x138fc
+bdmlib_write_block size 0x200 to adr 0x13afc
+bdmlib_write_block size 0x200 to adr 0x13cfc
+bdmlib_write_block size 0xec to adr 0x13efc
+bdmlib_load_section:
+	section .bss index 2
+	flags 0x1 raw_size 23720 cooked_size 0
+	vma 0x13fe8 lma 0x13fe8 output_offset 0
+bdmlib_load_section:
+	section .stab index 3
+	flags 0x10600 raw_size 73356 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 4
+	flags 0x10600 raw_size 29630 cooked_size 0
+	vma 0 lma 0 output_offset 0
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0xd6ffff = (hi 0xd6 lo 0xffff)
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_resume: pid -1 step=0, sig=10
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0xd6ffff = (hi 0xd6 lo 0xffff)
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_create_inferior: execfile /projects/cubeos/src/init.coff args=, env=USERNAME=root
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /projects/cubeos/src/init.coff
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /projects/cubeos/src/init.coff suffix 1
+	no macro file found
+bdmlib_load_section:
+	section .text index 0
+	flags 0x223 raw_size 79228 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_write_block size 0x200 to adr 0
+bdmlib_write_block size 0x200 to adr 0x200
+bdmlib_write_block size 0x200 to adr 0x400
+bdmlib_write_block size 0x200 to adr 0x600
+bdmlib_write_block size 0x200 to adr 0x800
+bdmlib_write_block size 0x200 to adr 0xa00
+bdmlib_write_block size 0x200 to adr 0xc00
+bdmlib_write_block size 0x200 to adr 0xe00
+bdmlib_write_block size 0x200 to adr 0x1000
+bdmlib_write_block size 0x200 to adr 0x1200
+bdmlib_write_block size 0x200 to adr 0x1400
+bdmlib_write_block size 0x200 to adr 0x1600
+bdmlib_write_block size 0x200 to adr 0x1800
+bdmlib_write_block size 0x200 to adr 0x1a00
+bdmlib_write_block size 0x200 to adr 0x1c00
+bdmlib_write_block size 0x200 to adr 0x1e00
+bdmlib_write_block size 0x200 to adr 0x2000
+bdmlib_write_block size 0x200 to adr 0x2200
+bdmlib_write_block size 0x200 to adr 0x2400
+bdmlib_write_block size 0x200 to adr 0x2600
+bdmlib_write_block size 0x200 to adr 0x2800
+bdmlib_write_block size 0x200 to adr 0x2a00
+bdmlib_write_block size 0x200 to adr 0x2c00
+bdmlib_write_block size 0x200 to adr 0x2e00
+bdmlib_write_block size 0x200 to adr 0x3000
+bdmlib_write_block size 0x200 to adr 0x3200
+bdmlib_write_block size 0x200 to adr 0x3400
+bdmlib_write_block size 0x200 to adr 0x3600
+bdmlib_write_block size 0x200 to adr 0x3800
+bdmlib_write_block size 0x200 to adr 0x3a00
+bdmlib_write_block size 0x200 to adr 0x3c00
+bdmlib_write_block size 0x200 to adr 0x3e00
+bdmlib_write_block size 0x200 to adr 0x4000
+bdmlib_write_block size 0x200 to adr 0x4200
+bdmlib_write_block size 0x200 to adr 0x4400
+bdmlib_write_block size 0x200 to adr 0x4600
+bdmlib_write_block size 0x200 to adr 0x4800
+bdmlib_write_block size 0x200 to adr 0x4a00
+bdmlib_write_block size 0x200 to adr 0x4c00
+bdmlib_write_block size 0x200 to adr 0x4e00
+bdmlib_write_block size 0x200 to adr 0x5000
+bdmlib_write_block size 0x200 to adr 0x5200
+bdmlib_write_block size 0x200 to adr 0x5400
+bdmlib_write_block size 0x200 to adr 0x5600
+bdmlib_write_block size 0x200 to adr 0x5800
+bdmlib_write_block size 0x200 to adr 0x5a00
+bdmlib_write_block size 0x200 to adr 0x5c00
+bdmlib_write_block size 0x200 to adr 0x5e00
+bdmlib_write_block size 0x200 to adr 0x6000
+bdmlib_write_block size 0x200 to adr 0x6200
+bdmlib_write_block size 0x200 to adr 0x6400
+bdmlib_write_block size 0x200 to adr 0x6600
+bdmlib_write_block size 0x200 to adr 0x6800
+bdmlib_write_block size 0x200 to adr 0x6a00
+bdmlib_write_block size 0x200 to adr 0x6c00
+bdmlib_write_block size 0x200 to adr 0x6e00
+bdmlib_write_block size 0x200 to adr 0x7000
+bdmlib_write_block size 0x200 to adr 0x7200
+bdmlib_write_block size 0x200 to adr 0x7400
+bdmlib_write_block size 0x200 to adr 0x7600
+bdmlib_write_block size 0x200 to adr 0x7800
+bdmlib_write_block size 0x200 to adr 0x7a00
+bdmlib_write_block size 0x200 to adr 0x7c00
+bdmlib_write_block size 0x200 to adr 0x7e00
+bdmlib_write_block size 0x200 to adr 0x8000
+bdmlib_write_block size 0x200 to adr 0x8200
+bdmlib_write_block size 0x200 to adr 0x8400
+bdmlib_write_block size 0x200 to adr 0x8600
+bdmlib_write_block size 0x200 to adr 0x8800
+bdmlib_write_block size 0x200 to adr 0x8a00
+bdmlib_write_block size 0x200 to adr 0x8c00
+bdmlib_write_block size 0x200 to adr 0x8e00
+bdmlib_write_block size 0x200 to adr 0x9000
+bdmlib_write_block size 0x200 to adr 0x9200
+bdmlib_write_block size 0x200 to adr 0x9400
+bdmlib_write_block size 0x200 to adr 0x9600
+bdmlib_write_block size 0x200 to adr 0x9800
+bdmlib_write_block size 0x200 to adr 0x9a00
+bdmlib_write_block size 0x200 to adr 0x9c00
+bdmlib_write_block size 0x200 to adr 0x9e00
+bdmlib_write_block size 0x200 to adr 0xa000
+bdmlib_write_block size 0x200 to adr 0xa200
+bdmlib_write_block size 0x200 to adr 0xa400
+bdmlib_write_block size 0x200 to adr 0xa600
+bdmlib_write_block size 0x200 to adr 0xa800
+bdmlib_write_block size 0x200 to adr 0xaa00
+bdmlib_write_block size 0x200 to adr 0xac00
+bdmlib_write_block size 0x200 to adr 0xae00
+bdmlib_write_block size 0x200 to adr 0xb000
+bdmlib_write_block size 0x200 to adr 0xb200
+bdmlib_write_block size 0x200 to adr 0xb400
+bdmlib_write_block size 0x200 to adr 0xb600
+bdmlib_write_block size 0x200 to adr 0xb800
+bdmlib_write_block size 0x200 to adr 0xba00
+bdmlib_write_block size 0x200 to adr 0xbc00
+bdmlib_write_block size 0x200 to adr 0xbe00
+bdmlib_write_block size 0x200 to adr 0xc000
+bdmlib_write_block size 0x200 to adr 0xc200
+bdmlib_write_block size 0x200 to adr 0xc400
+bdmlib_write_block size 0x200 to adr 0xc600
+bdmlib_write_block size 0x200 to adr 0xc800
+bdmlib_write_block size 0x200 to adr 0xca00
+bdmlib_write_block size 0x200 to adr 0xcc00
+bdmlib_write_block size 0x200 to adr 0xce00
+bdmlib_write_block size 0x200 to adr 0xd000
+bdmlib_write_block size 0x200 to adr 0xd200
+bdmlib_write_block size 0x200 to adr 0xd400
+bdmlib_write_block size 0x200 to adr 0xd600
+bdmlib_write_block size 0x200 to adr 0xd800
+bdmlib_write_block size 0x200 to adr 0xda00
+bdmlib_write_block size 0x200 to adr 0xdc00
+bdmlib_write_block size 0x200 to adr 0xde00
+bdmlib_write_block size 0x200 to adr 0xe000
+bdmlib_write_block size 0x200 to adr 0xe200
+bdmlib_write_block size 0x200 to adr 0xe400
+bdmlib_write_block size 0x200 to adr 0xe600
+bdmlib_write_block size 0x200 to adr 0xe800
+bdmlib_write_block size 0x200 to adr 0xea00
+bdmlib_write_block size 0x200 to adr 0xec00
+bdmlib_write_block size 0x200 to adr 0xee00
+bdmlib_write_block size 0x200 to adr 0xf000
+bdmlib_write_block size 0x200 to adr 0xf200
+bdmlib_write_block size 0x200 to adr 0xf400
+bdmlib_write_block size 0x200 to adr 0xf600
+bdmlib_write_block size 0x200 to adr 0xf800
+bdmlib_write_block size 0x200 to adr 0xfa00
+bdmlib_write_block size 0x200 to adr 0xfc00
+bdmlib_write_block size 0x200 to adr 0xfe00
+bdmlib_write_block size 0x200 to adr 0x10000
+bdmlib_write_block size 0x200 to adr 0x10200
+bdmlib_write_block size 0x200 to adr 0x10400
+bdmlib_write_block size 0x200 to adr 0x10600
+bdmlib_write_block size 0x200 to adr 0x10800
+bdmlib_write_block size 0x200 to adr 0x10a00
+bdmlib_write_block size 0x200 to adr 0x10c00
+bdmlib_write_block size 0x200 to adr 0x10e00
+bdmlib_write_block size 0x200 to adr 0x11000
+bdmlib_write_block size 0x200 to adr 0x11200
+bdmlib_write_block size 0x200 to adr 0x11400
+bdmlib_write_block size 0x200 to adr 0x11600
+bdmlib_write_block size 0x200 to adr 0x11800
+bdmlib_write_block size 0x200 to adr 0x11a00
+bdmlib_write_block size 0x200 to adr 0x11c00
+bdmlib_write_block size 0x200 to adr 0x11e00
+bdmlib_write_block size 0x200 to adr 0x12000
+bdmlib_write_block size 0x200 to adr 0x12200
+bdmlib_write_block size 0x200 to adr 0x12400
+bdmlib_write_block size 0x200 to adr 0x12600
+bdmlib_write_block size 0x200 to adr 0x12800
+bdmlib_write_block size 0x200 to adr 0x12a00
+bdmlib_write_block size 0x200 to adr 0x12c00
+bdmlib_write_block size 0x200 to adr 0x12e00
+bdmlib_write_block size 0x200 to adr 0x13000
+bdmlib_write_block size 0x200 to adr 0x13200
+bdmlib_write_block size 0x17c to adr 0x13400
+bdmlib_load_section:
+	section .data index 1
+	flags 0x243 raw_size 2796 cooked_size 0
+	vma 0x1357c lma 0x1357c output_offset 0
+bdmlib_write_block size 0x200 to adr 0x1357c
+bdmlib_write_block size 0x200 to adr 0x1377c
+bdmlib_write_block size 0x200 to adr 0x1397c
+bdmlib_write_block size 0x200 to adr 0x13b7c
+bdmlib_write_block size 0x200 to adr 0x13d7c
+bdmlib_write_block size 0xec to adr 0x13f7c
+bdmlib_load_section:
+	section .bss index 2
+	flags 0x1 raw_size 23720 cooked_size 0
+	vma 0x14068 lma 0x14068 output_offset 0
+bdmlib_load_section:
+	section .stab index 3
+	flags 0x10600 raw_size 73356 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 4
+	flags 0x10600 raw_size 29630 cooked_size 0
+	vma 0 lma 0 output_offset 0
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_create_inferior: execfile /projects/cubeos/src/init.coff args=, env=USERNAME=root
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /projects/cubeos/src/init.coff
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /projects/cubeos/src/init.coff suffix 1
+	no macro file found
+bdmlib_load_section:
+	section .text index 0
+	flags 0x223 raw_size 79164 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_write_block size 0x200 to adr 0
+bdmlib_write_block size 0x200 to adr 0x200
+bdmlib_write_block size 0x200 to adr 0x400
+bdmlib_write_block size 0x200 to adr 0x600
+bdmlib_write_block size 0x200 to adr 0x800
+bdmlib_write_block size 0x200 to adr 0xa00
+bdmlib_write_block size 0x200 to adr 0xc00
+bdmlib_write_block size 0x200 to adr 0xe00
+bdmlib_write_block size 0x200 to adr 0x1000
+bdmlib_write_block size 0x200 to adr 0x1200
+bdmlib_write_block size 0x200 to adr 0x1400
+bdmlib_write_block size 0x200 to adr 0x1600
+bdmlib_write_block size 0x200 to adr 0x1800
+bdmlib_write_block size 0x200 to adr 0x1a00
+bdmlib_write_block size 0x200 to adr 0x1c00
+bdmlib_write_block size 0x200 to adr 0x1e00
+bdmlib_write_block size 0x200 to adr 0x2000
+bdmlib_write_block size 0x200 to adr 0x2200
+bdmlib_write_block size 0x200 to adr 0x2400
+bdmlib_write_block size 0x200 to adr 0x2600
+bdmlib_write_block size 0x200 to adr 0x2800
+bdmlib_write_block size 0x200 to adr 0x2a00
+bdmlib_write_block size 0x200 to adr 0x2c00
+bdmlib_write_block size 0x200 to adr 0x2e00
+bdmlib_write_block size 0x200 to adr 0x3000
+bdmlib_write_block size 0x200 to adr 0x3200
+bdmlib_write_block size 0x200 to adr 0x3400
+bdmlib_write_block size 0x200 to adr 0x3600
+bdmlib_write_block size 0x200 to adr 0x3800
+bdmlib_write_block size 0x200 to adr 0x3a00
+bdmlib_write_block size 0x200 to adr 0x3c00
+bdmlib_write_block size 0x200 to adr 0x3e00
+bdmlib_write_block size 0x200 to adr 0x4000
+bdmlib_write_block size 0x200 to adr 0x4200
+bdmlib_write_block size 0x200 to adr 0x4400
+bdmlib_write_block size 0x200 to adr 0x4600
+bdmlib_write_block size 0x200 to adr 0x4800
+bdmlib_write_block size 0x200 to adr 0x4a00
+bdmlib_write_block size 0x200 to adr 0x4c00
+bdmlib_write_block size 0x200 to adr 0x4e00
+bdmlib_write_block size 0x200 to adr 0x5000
+bdmlib_write_block size 0x200 to adr 0x5200
+bdmlib_write_block size 0x200 to adr 0x5400
+bdmlib_write_block size 0x200 to adr 0x5600
+bdmlib_write_block size 0x200 to adr 0x5800
+bdmlib_write_block size 0x200 to adr 0x5a00
+bdmlib_write_block size 0x200 to adr 0x5c00
+bdmlib_write_block size 0x200 to adr 0x5e00
+bdmlib_write_block size 0x200 to adr 0x6000
+bdmlib_write_block size 0x200 to adr 0x6200
+bdmlib_write_block size 0x200 to adr 0x6400
+bdmlib_write_block size 0x200 to adr 0x6600
+bdmlib_write_block size 0x200 to adr 0x6800
+bdmlib_write_block size 0x200 to adr 0x6a00
+bdmlib_write_block size 0x200 to adr 0x6c00
+bdmlib_write_block size 0x200 to adr 0x6e00
+bdmlib_write_block size 0x200 to adr 0x7000
+bdmlib_write_block size 0x200 to adr 0x7200
+bdmlib_write_block size 0x200 to adr 0x7400
+bdmlib_write_block size 0x200 to adr 0x7600
+bdmlib_write_block size 0x200 to adr 0x7800
+bdmlib_write_block size 0x200 to adr 0x7a00
+bdmlib_write_block size 0x200 to adr 0x7c00
+bdmlib_write_block size 0x200 to adr 0x7e00
+bdmlib_write_block size 0x200 to adr 0x8000
+bdmlib_write_block size 0x200 to adr 0x8200
+bdmlib_write_block size 0x200 to adr 0x8400
+bdmlib_write_block size 0x200 to adr 0x8600
+bdmlib_write_block size 0x200 to adr 0x8800
+bdmlib_write_block size 0x200 to adr 0x8a00
+bdmlib_write_block size 0x200 to adr 0x8c00
+bdmlib_write_block size 0x200 to adr 0x8e00
+bdmlib_write_block size 0x200 to adr 0x9000
+bdmlib_write_block size 0x200 to adr 0x9200
+bdmlib_write_block size 0x200 to adr 0x9400
+bdmlib_write_block size 0x200 to adr 0x9600
+bdmlib_write_block size 0x200 to adr 0x9800
+bdmlib_write_block size 0x200 to adr 0x9a00
+bdmlib_write_block size 0x200 to adr 0x9c00
+bdmlib_write_block size 0x200 to adr 0x9e00
+bdmlib_write_block size 0x200 to adr 0xa000
+bdmlib_write_block size 0x200 to adr 0xa200
+bdmlib_write_block size 0x200 to adr 0xa400
+bdmlib_write_block size 0x200 to adr 0xa600
+bdmlib_write_block size 0x200 to adr 0xa800
+bdmlib_write_block size 0x200 to adr 0xaa00
+bdmlib_write_block size 0x200 to adr 0xac00
+bdmlib_write_block size 0x200 to adr 0xae00
+bdmlib_write_block size 0x200 to adr 0xb000
+bdmlib_write_block size 0x200 to adr 0xb200
+bdmlib_write_block size 0x200 to adr 0xb400
+bdmlib_write_block size 0x200 to adr 0xb600
+bdmlib_write_block size 0x200 to adr 0xb800
+bdmlib_write_block size 0x200 to adr 0xba00
+bdmlib_write_block size 0x200 to adr 0xbc00
+bdmlib_write_block size 0x200 to adr 0xbe00
+bdmlib_write_block size 0x200 to adr 0xc000
+bdmlib_write_block size 0x200 to adr 0xc200
+bdmlib_write_block size 0x200 to adr 0xc400
+bdmlib_write_block size 0x200 to adr 0xc600
+bdmlib_write_block size 0x200 to adr 0xc800
+bdmlib_write_block size 0x200 to adr 0xca00
+bdmlib_write_block size 0x200 to adr 0xcc00
+bdmlib_write_block size 0x200 to adr 0xce00
+bdmlib_write_block size 0x200 to adr 0xd000
+bdmlib_write_block size 0x200 to adr 0xd200
+bdmlib_write_block size 0x200 to adr 0xd400
+bdmlib_write_block size 0x200 to adr 0xd600
+bdmlib_write_block size 0x200 to adr 0xd800
+bdmlib_write_block size 0x200 to adr 0xda00
+bdmlib_write_block size 0x200 to adr 0xdc00
+bdmlib_write_block size 0x200 to adr 0xde00
+bdmlib_write_block size 0x200 to adr 0xe000
+bdmlib_write_block size 0x200 to adr 0xe200
+bdmlib_write_block size 0x200 to adr 0xe400
+bdmlib_write_block size 0x200 to adr 0xe600
+bdmlib_write_block size 0x200 to adr 0xe800
+bdmlib_write_block size 0x200 to adr 0xea00
+bdmlib_write_block size 0x200 to adr 0xec00
+bdmlib_write_block size 0x200 to adr 0xee00
+bdmlib_write_block size 0x200 to adr 0xf000
+bdmlib_write_block size 0x200 to adr 0xf200
+bdmlib_write_block size 0x200 to adr 0xf400
+bdmlib_write_block size 0x200 to adr 0xf600
+bdmlib_write_block size 0x200 to adr 0xf800
+bdmlib_write_block size 0x200 to adr 0xfa00
+bdmlib_write_block size 0x200 to adr 0xfc00
+bdmlib_write_block size 0x200 to adr 0xfe00
+bdmlib_write_block size 0x200 to adr 0x10000
+bdmlib_write_block size 0x200 to adr 0x10200
+bdmlib_write_block size 0x200 to adr 0x10400
+bdmlib_write_block size 0x200 to adr 0x10600
+bdmlib_write_block size 0x200 to adr 0x10800
+bdmlib_write_block size 0x200 to adr 0x10a00
+bdmlib_write_block size 0x200 to adr 0x10c00
+bdmlib_write_block size 0x200 to adr 0x10e00
+bdmlib_write_block size 0x200 to adr 0x11000
+bdmlib_write_block size 0x200 to adr 0x11200
+bdmlib_write_block size 0x200 to adr 0x11400
+bdmlib_write_block size 0x200 to adr 0x11600
+bdmlib_write_block size 0x200 to adr 0x11800
+bdmlib_write_block size 0x200 to adr 0x11a00
+bdmlib_write_block size 0x200 to adr 0x11c00
+bdmlib_write_block size 0x200 to adr 0x11e00
+bdmlib_write_block size 0x200 to adr 0x12000
+bdmlib_write_block size 0x200 to adr 0x12200
+bdmlib_write_block size 0x200 to adr 0x12400
+bdmlib_write_block size 0x200 to adr 0x12600
+bdmlib_write_block size 0x200 to adr 0x12800
+bdmlib_write_block size 0x200 to adr 0x12a00
+bdmlib_write_block size 0x200 to adr 0x12c00
+bdmlib_write_block size 0x200 to adr 0x12e00
+bdmlib_write_block size 0x200 to adr 0x13000
+bdmlib_write_block size 0x200 to adr 0x13200
+bdmlib_write_block size 0x13c to adr 0x13400
+bdmlib_load_section:
+	section .data index 1
+	flags 0x243 raw_size 2796 cooked_size 0
+	vma 0x1353c lma 0x1353c output_offset 0
+bdmlib_write_block size 0x200 to adr 0x1353c
+bdmlib_write_block size 0x200 to adr 0x1373c
+bdmlib_write_block size 0x200 to adr 0x1393c
+bdmlib_write_block size 0x200 to adr 0x13b3c
+bdmlib_write_block size 0x200 to adr 0x13d3c
+bdmlib_write_block size 0xec to adr 0x13f3c
+bdmlib_load_section:
+	section .bss index 2
+	flags 0x1 raw_size 23720 cooked_size 0
+	vma 0x14028 lma 0x14028 output_offset 0
+bdmlib_load_section:
+	section .stab index 3
+	flags 0x10600 raw_size 73356 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 4
+	flags 0x10600 raw_size 29630 cooked_size 0
+	vma 0 lma 0 output_offset 0
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_create_inferior: execfile /projects/cubeos/src/init.coff args=, env=USERNAME=root
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /projects/cubeos/src/init.coff
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /projects/cubeos/src/init.coff suffix 1
+	no macro file found
+bdmlib_load_section:
+	section .text index 0
+	flags 0x223 raw_size 79232 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_write_block size 0x200 to adr 0
+bdmlib_write_block size 0x200 to adr 0x200
+bdmlib_write_block size 0x200 to adr 0x400
+bdmlib_write_block size 0x200 to adr 0x600
+bdmlib_write_block size 0x200 to adr 0x800
+bdmlib_write_block size 0x200 to adr 0xa00
+bdmlib_write_block size 0x200 to adr 0xc00
+bdmlib_write_block size 0x200 to adr 0xe00
+bdmlib_write_block size 0x200 to adr 0x1000
+bdmlib_write_block size 0x200 to adr 0x1200
+bdmlib_write_block size 0x200 to adr 0x1400
+bdmlib_write_block size 0x200 to adr 0x1600
+bdmlib_write_block size 0x200 to adr 0x1800
+bdmlib_write_block size 0x200 to adr 0x1a00
+bdmlib_write_block size 0x200 to adr 0x1c00
+bdmlib_write_block size 0x200 to adr 0x1e00
+bdmlib_write_block size 0x200 to adr 0x2000
+bdmlib_write_block size 0x200 to adr 0x2200
+bdmlib_write_block size 0x200 to adr 0x2400
+bdmlib_write_block size 0x200 to adr 0x2600
+bdmlib_write_block size 0x200 to adr 0x2800
+bdmlib_write_block size 0x200 to adr 0x2a00
+bdmlib_write_block size 0x200 to adr 0x2c00
+bdmlib_write_block size 0x200 to adr 0x2e00
+bdmlib_write_block size 0x200 to adr 0x3000
+bdmlib_write_block size 0x200 to adr 0x3200
+bdmlib_write_block size 0x200 to adr 0x3400
+bdmlib_write_block size 0x200 to adr 0x3600
+bdmlib_write_block size 0x200 to adr 0x3800
+bdmlib_write_block size 0x200 to adr 0x3a00
+bdmlib_write_block size 0x200 to adr 0x3c00
+bdmlib_write_block size 0x200 to adr 0x3e00
+bdmlib_write_block size 0x200 to adr 0x4000
+bdmlib_write_block size 0x200 to adr 0x4200
+bdmlib_write_block size 0x200 to adr 0x4400
+bdmlib_write_block size 0x200 to adr 0x4600
+bdmlib_write_block size 0x200 to adr 0x4800
+bdmlib_write_block size 0x200 to adr 0x4a00
+bdmlib_write_block size 0x200 to adr 0x4c00
+bdmlib_write_block size 0x200 to adr 0x4e00
+bdmlib_write_block size 0x200 to adr 0x5000
+bdmlib_write_block size 0x200 to adr 0x5200
+bdmlib_write_block size 0x200 to adr 0x5400
+bdmlib_write_block size 0x200 to adr 0x5600
+bdmlib_write_block size 0x200 to adr 0x5800
+bdmlib_write_block size 0x200 to adr 0x5a00
+bdmlib_write_block size 0x200 to adr 0x5c00
+bdmlib_write_block size 0x200 to adr 0x5e00
+bdmlib_write_block size 0x200 to adr 0x6000
+bdmlib_write_block size 0x200 to adr 0x6200
+bdmlib_write_block size 0x200 to adr 0x6400
+bdmlib_write_block size 0x200 to adr 0x6600
+bdmlib_write_block size 0x200 to adr 0x6800
+bdmlib_write_block size 0x200 to adr 0x6a00
+bdmlib_write_block size 0x200 to adr 0x6c00
+bdmlib_write_block size 0x200 to adr 0x6e00
+bdmlib_write_block size 0x200 to adr 0x7000
+bdmlib_write_block size 0x200 to adr 0x7200
+bdmlib_write_block size 0x200 to adr 0x7400
+bdmlib_write_block size 0x200 to adr 0x7600
+bdmlib_write_block size 0x200 to adr 0x7800
+bdmlib_write_block size 0x200 to adr 0x7a00
+bdmlib_write_block size 0x200 to adr 0x7c00
+bdmlib_write_block size 0x200 to adr 0x7e00
+bdmlib_write_block size 0x200 to adr 0x8000
+bdmlib_write_block size 0x200 to adr 0x8200
+bdmlib_write_block size 0x200 to adr 0x8400
+bdmlib_write_block size 0x200 to adr 0x8600
+bdmlib_write_block size 0x200 to adr 0x8800
+bdmlib_write_block size 0x200 to adr 0x8a00
+bdmlib_write_block size 0x200 to adr 0x8c00
+bdmlib_write_block size 0x200 to adr 0x8e00
+bdmlib_write_block size 0x200 to adr 0x9000
+bdmlib_write_block size 0x200 to adr 0x9200
+bdmlib_write_block size 0x200 to adr 0x9400
+bdmlib_write_block size 0x200 to adr 0x9600
+bdmlib_write_block size 0x200 to adr 0x9800
+bdmlib_write_block size 0x200 to adr 0x9a00
+bdmlib_write_block size 0x200 to adr 0x9c00
+bdmlib_write_block size 0x200 to adr 0x9e00
+bdmlib_write_block size 0x200 to adr 0xa000
+bdmlib_write_block size 0x200 to adr 0xa200
+bdmlib_write_block size 0x200 to adr 0xa400
+bdmlib_write_block size 0x200 to adr 0xa600
+bdmlib_write_block size 0x200 to adr 0xa800
+bdmlib_write_block size 0x200 to adr 0xaa00
+bdmlib_write_block size 0x200 to adr 0xac00
+bdmlib_write_block size 0x200 to adr 0xae00
+bdmlib_write_block size 0x200 to adr 0xb000
+bdmlib_write_block size 0x200 to adr 0xb200
+bdmlib_write_block size 0x200 to adr 0xb400
+bdmlib_write_block size 0x200 to adr 0xb600
+bdmlib_write_block size 0x200 to adr 0xb800
+bdmlib_write_block size 0x200 to adr 0xba00
+bdmlib_write_block size 0x200 to adr 0xbc00
+bdmlib_write_block size 0x200 to adr 0xbe00
+bdmlib_write_block size 0x200 to adr 0xc000
+bdmlib_write_block size 0x200 to adr 0xc200
+bdmlib_write_block size 0x200 to adr 0xc400
+bdmlib_write_block size 0x200 to adr 0xc600
+bdmlib_write_block size 0x200 to adr 0xc800
+bdmlib_write_block size 0x200 to adr 0xca00
+bdmlib_write_block size 0x200 to adr 0xcc00
+bdmlib_write_block size 0x200 to adr 0xce00
+bdmlib_write_block size 0x200 to adr 0xd000
+bdmlib_write_block size 0x200 to adr 0xd200
+bdmlib_write_block size 0x200 to adr 0xd400
+bdmlib_write_block size 0x200 to adr 0xd600
+bdmlib_write_block size 0x200 to adr 0xd800
+bdmlib_write_block size 0x200 to adr 0xda00
+bdmlib_write_block size 0x200 to adr 0xdc00
+bdmlib_write_block size 0x200 to adr 0xde00
+bdmlib_write_block size 0x200 to adr 0xe000
+bdmlib_write_block size 0x200 to adr 0xe200
+bdmlib_write_block size 0x200 to adr 0xe400
+bdmlib_write_block size 0x200 to adr 0xe600
+bdmlib_write_block size 0x200 to adr 0xe800
+bdmlib_write_block size 0x200 to adr 0xea00
+bdmlib_write_block size 0x200 to adr 0xec00
+bdmlib_write_block size 0x200 to adr 0xee00
+bdmlib_write_block size 0x200 to adr 0xf000
+bdmlib_write_block size 0x200 to adr 0xf200
+bdmlib_write_block size 0x200 to adr 0xf400
+bdmlib_write_block size 0x200 to adr 0xf600
+bdmlib_write_block size 0x200 to adr 0xf800
+bdmlib_write_block size 0x200 to adr 0xfa00
+bdmlib_write_block size 0x200 to adr 0xfc00
+bdmlib_write_block size 0x200 to adr 0xfe00
+bdmlib_write_block size 0x200 to adr 0x10000
+bdmlib_write_block size 0x200 to adr 0x10200
+bdmlib_write_block size 0x200 to adr 0x10400
+bdmlib_write_block size 0x200 to adr 0x10600
+bdmlib_write_block size 0x200 to adr 0x10800
+bdmlib_write_block size 0x200 to adr 0x10a00
+bdmlib_write_block size 0x200 to adr 0x10c00
+bdmlib_write_block size 0x200 to adr 0x10e00
+bdmlib_write_block size 0x200 to adr 0x11000
+bdmlib_write_block size 0x200 to adr 0x11200
+bdmlib_write_block size 0x200 to adr 0x11400
+bdmlib_write_block size 0x200 to adr 0x11600
+bdmlib_write_block size 0x200 to adr 0x11800
+bdmlib_write_block size 0x200 to adr 0x11a00
+bdmlib_write_block size 0x200 to adr 0x11c00
+bdmlib_write_block size 0x200 to adr 0x11e00
+bdmlib_write_block size 0x200 to adr 0x12000
+bdmlib_write_block size 0x200 to adr 0x12200
+bdmlib_write_block size 0x200 to adr 0x12400
+bdmlib_write_block size 0x200 to adr 0x12600
+bdmlib_write_block size 0x200 to adr 0x12800
+bdmlib_write_block size 0x200 to adr 0x12a00
+bdmlib_write_block size 0x200 to adr 0x12c00
+bdmlib_write_block size 0x200 to adr 0x12e00
+bdmlib_write_block size 0x200 to adr 0x13000
+bdmlib_write_block size 0x200 to adr 0x13200
+bdmlib_write_block size 0x180 to adr 0x13400
+bdmlib_load_section:
+	section .data index 1
+	flags 0x243 raw_size 2796 cooked_size 0
+	vma 0x13580 lma 0x13580 output_offset 0
+bdmlib_write_block size 0x200 to adr 0x13580
+bdmlib_write_block size 0x200 to adr 0x13780
+bdmlib_write_block size 0x200 to adr 0x13980
+bdmlib_write_block size 0x200 to adr 0x13b80
+bdmlib_write_block size 0x200 to adr 0x13d80
+bdmlib_write_block size 0xec to adr 0x13f80
+bdmlib_load_section:
+	section .bss index 2
+	flags 0x1 raw_size 23720 cooked_size 0
+	vma 0x1406c lma 0x1406c output_offset 0
+bdmlib_load_section:
+	section .stab index 3
+	flags 0x10600 raw_size 73356 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 4
+	flags 0x10600 raw_size 29630 cooked_size 0
+	vma 0 lma 0 output_offset 0
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_xfer_inferior_memory memaddr 0x2b88 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b88  cont 0xbffff84e
+bdmlib_read_var size 0 from adr 0x2b89  cont 0xbfff564e
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b8c  cont 0xbfff5610
+bdmlib_read_var size 0 from adr 0x2b8d  cont 0xbfff3910
+GDB: bdm_insert_breakpoints at 0x2b8c 
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b8c  cont 0x10
+bdmlib_read_var size 0 from adr 0x2b8d  cont 0x3910
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 1
+bdmlib_write_mem: addr 0x2b8c cont 0x4a
+bdmlib_write_mem: addr 0x2b8d cont 0xfffffffa
+GDB: bdm_resume: pid -1 step=0, sig=18
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0x1 = (hi 0 lo 0x1)
+GDB: we have re-entered bdm-mode
+GDB: bdm_analyze_exception: val_h = 0 (should be 0x0)
+GDB: 	bkpt found at (pcc) = 0x2b8c
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_remove_breakpoint at 0x2b8c 
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 1
+bdmlib_write_mem: addr 0x2b8c cont 0x10
+bdmlib_write_mem: addr 0x2b8d cont 0x39
+GDB: bdm_xfer_inferior_memory memaddr 0x2b88 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b88  cont 0x8093d4e
+bdmlib_read_var size 0 from adr 0x2b89  cont 0x809564e
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8a len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b8a  cont 0x800564e
+bdmlib_read_var size 0 from adr 0x2b8b  cont 0x564e
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b8c  cont 0x8093d10
+bdmlib_read_var size 0 from adr 0x2b8d  cont 0x8093910
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8e len 4 write 0
+bdmlib_read_var size 0 from adr 0x2b8e  cont 0x8003910
+bdmlib_read_var size 0 from adr 0x2b8f  cont 0xff003910
+bdmlib_read_var size 0 from adr 0x2b90  cont 0xfa
+bdmlib_read_var size 0 from adr 0x2b91  cont 0xfa
+GDB: bdm_xfer_inferior_memory memaddr 0x2b92 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b92  cont 0x8093d12
+bdmlib_read_var size 0 from adr 0x2b93  cont 0x8090012
+GDB: bdm_xfer_inferior_memory memaddr 0x2b94 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b94  cont 0x8093d00
+bdmlib_read_var size 0 from adr 0x2b95  cont 0x8090100
+GDB: bdm_xfer_inferior_memory memaddr 0x2b96 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b96  cont 0x8000100
+bdmlib_read_var size 0 from adr 0x2b97  cont 0x100
+GDB: bdm_xfer_inferior_memory memaddr 0x2b98 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b98  cont 0x8093d13
+bdmlib_read_var size 0 from adr 0x2b99  cont 0x809c113
+GDB: bdm_xfer_inferior_memory memaddr 0x2b9a len 4 write 0
+bdmlib_read_var size 0 from adr 0x2b9a  cont 0x800c113
+bdmlib_read_var size 0 from adr 0x2b9b  cont 0xff00c113
+bdmlib_read_var size 0 from adr 0x2b9c  cont 0xfa
+bdmlib_read_var size 0 from adr 0x2b9d  cont 0xfa
+GDB: bdm_xfer_inferior_memory memaddr 0x2b9e len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b9e  cont 0x8093d4e
+bdmlib_read_var size 0 from adr 0x2b9f  cont 0x8095e4e
+GDB: bdm_xfer_inferior_memory memaddr 0x2ba0 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2ba0  cont 0x8093d4e
+bdmlib_read_var size 0 from adr 0x2ba1  cont 0x809754e
+GDB: bdm_xfer_inferior_memory memaddr 0x2ba2 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2ba2  cont 0x8093d00
+bdmlib_read_var size 0 from adr 0x2ba3  cont 0x8090000
+GDB: bdm_xfer_inferior_memory memaddr 0x2ba4 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2ba4  cont 0x8490000
+bdmlib_read_var size 0 from adr 0x2ba5  cont 0x6e490000
+GDB: bdm_xfer_inferior_memory memaddr 0x2ba6 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2ba6  cont 0x8093d69
+bdmlib_read_var size 0 from adr 0x2ba7  cont 0x8097469
+GDB: bdm_xfer_inferior_memory memaddr 0x2ba8 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2ba8  cont 0x8093d20
+bdmlib_read_var size 0 from adr 0x2ba9  cont 0x8094e20
+GDB: bdm_xfer_inferior_memory memaddr 0x2baa len 2 write 0
+bdmlib_read_var size 0 from adr 0x2baa  cont 0x8093d65
+bdmlib_read_var size 0 from adr 0x2bab  cont 0x8097465
+GDB: bdm_xfer_inferior_memory memaddr 0x2bac len 2 write 0
+bdmlib_read_var size 0 from adr 0x2bac  cont 0x8093d77
+bdmlib_read_var size 0 from adr 0x2bad  cont 0x8096f77
+GDB: bdm_xfer_inferior_memory memaddr 0x2bae len 2 write 0
+bdmlib_read_var size 0 from adr 0x2bae  cont 0x8093d72
+bdmlib_read_var size 0 from adr 0x2baf  cont 0x8096b72
+GDB: bdm_xfer_inferior_memory memaddr 0x2bb0 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2bb0  cont 0x8093d00
+bdmlib_read_var size 0 from adr 0x2bb1  cont 0x8090000
+GDB: bdm_xfer_inferior_memory memaddr 0x2bb2 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2bb2  cont 0x84e0000
+bdmlib_read_var size 0 from adr 0x2bb3  cont 0x564e0000
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_xfer_inferior_memory memaddr 0x2b88 len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b88  cont 0xbffff64e
+bdmlib_read_var size 0 from adr 0x2b89  cont 0xbfff564e
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b8c  cont 0xbfff5610
+bdmlib_read_var size 0 from adr 0x2b8d  cont 0xbfff3910
+GDB: bdm_create_inferior: execfile /projects/cubeos/src/init.coff args=, env=USERNAME=root
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /projects/cubeos/src/init.coff
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /projects/cubeos/src/init.coff suffix 1
+	no macro file found
+bdmlib_load_section:
+	section .text index 0
+	flags 0x223 raw_size 79220 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_write_block size 0x200 to adr 0
+bdmlib_write_block size 0x200 to adr 0x200
+bdmlib_write_block size 0x200 to adr 0x400
+bdmlib_write_block size 0x200 to adr 0x600
+bdmlib_write_block size 0x200 to adr 0x800
+bdmlib_write_block size 0x200 to adr 0xa00
+bdmlib_write_block size 0x200 to adr 0xc00
+bdmlib_write_block size 0x200 to adr 0xe00
+bdmlib_write_block size 0x200 to adr 0x1000
+bdmlib_write_block size 0x200 to adr 0x1200
+bdmlib_write_block size 0x200 to adr 0x1400
+bdmlib_write_block size 0x200 to adr 0x1600
+bdmlib_write_block size 0x200 to adr 0x1800
+bdmlib_write_block size 0x200 to adr 0x1a00
+bdmlib_write_block size 0x200 to adr 0x1c00
+bdmlib_write_block size 0x200 to adr 0x1e00
+bdmlib_write_block size 0x200 to adr 0x2000
+bdmlib_write_block size 0x200 to adr 0x2200
+bdmlib_write_block size 0x200 to adr 0x2400
+bdmlib_write_block size 0x200 to adr 0x2600
+bdmlib_write_block size 0x200 to adr 0x2800
+bdmlib_write_block size 0x200 to adr 0x2a00
+bdmlib_write_block size 0x200 to adr 0x2c00
+bdmlib_write_block size 0x200 to adr 0x2e00
+bdmlib_write_block size 0x200 to adr 0x3000
+bdmlib_write_block size 0x200 to adr 0x3200
+bdmlib_write_block size 0x200 to adr 0x3400
+bdmlib_write_block size 0x200 to adr 0x3600
+bdmlib_write_block size 0x200 to adr 0x3800
+bdmlib_write_block size 0x200 to adr 0x3a00
+bdmlib_write_block size 0x200 to adr 0x3c00
+bdmlib_write_block size 0x200 to adr 0x3e00
+bdmlib_write_block size 0x200 to adr 0x4000
+bdmlib_write_block size 0x200 to adr 0x4200
+bdmlib_write_block size 0x200 to adr 0x4400
+bdmlib_write_block size 0x200 to adr 0x4600
+bdmlib_write_block size 0x200 to adr 0x4800
+bdmlib_write_block size 0x200 to adr 0x4a00
+bdmlib_write_block size 0x200 to adr 0x4c00
+bdmlib_write_block size 0x200 to adr 0x4e00
+bdmlib_write_block size 0x200 to adr 0x5000
+bdmlib_write_block size 0x200 to adr 0x5200
+bdmlib_write_block size 0x200 to adr 0x5400
+bdmlib_write_block size 0x200 to adr 0x5600
+bdmlib_write_block size 0x200 to adr 0x5800
+bdmlib_write_block size 0x200 to adr 0x5a00
+bdmlib_write_block size 0x200 to adr 0x5c00
+bdmlib_write_block size 0x200 to adr 0x5e00
+bdmlib_write_block size 0x200 to adr 0x6000
+bdmlib_write_block size 0x200 to adr 0x6200
+bdmlib_write_block size 0x200 to adr 0x6400
+bdmlib_write_block size 0x200 to adr 0x6600
+bdmlib_write_block size 0x200 to adr 0x6800
+bdmlib_write_block size 0x200 to adr 0x6a00
+bdmlib_write_block size 0x200 to adr 0x6c00
+bdmlib_write_block size 0x200 to adr 0x6e00
+bdmlib_write_block size 0x200 to adr 0x7000
+bdmlib_write_block size 0x200 to adr 0x7200
+bdmlib_write_block size 0x200 to adr 0x7400
+bdmlib_write_block size 0x200 to adr 0x7600
+bdmlib_write_block size 0x200 to adr 0x7800
+bdmlib_write_block size 0x200 to adr 0x7a00
+bdmlib_write_block size 0x200 to adr 0x7c00
+bdmlib_write_block size 0x200 to adr 0x7e00
+bdmlib_write_block size 0x200 to adr 0x8000
+bdmlib_write_block size 0x200 to adr 0x8200
+bdmlib_write_block size 0x200 to adr 0x8400
+bdmlib_write_block size 0x200 to adr 0x8600
+bdmlib_write_block size 0x200 to adr 0x8800
+bdmlib_write_block size 0x200 to adr 0x8a00
+bdmlib_write_block size 0x200 to adr 0x8c00
+bdmlib_write_block size 0x200 to adr 0x8e00
+bdmlib_write_block size 0x200 to adr 0x9000
+bdmlib_write_block size 0x200 to adr 0x9200
+bdmlib_write_block size 0x200 to adr 0x9400
+bdmlib_write_block size 0x200 to adr 0x9600
+bdmlib_write_block size 0x200 to adr 0x9800
+bdmlib_write_block size 0x200 to adr 0x9a00
+bdmlib_write_block size 0x200 to adr 0x9c00
+bdmlib_write_block size 0x200 to adr 0x9e00
+bdmlib_write_block size 0x200 to adr 0xa000
+bdmlib_write_block size 0x200 to adr 0xa200
+bdmlib_write_block size 0x200 to adr 0xa400
+bdmlib_write_block size 0x200 to adr 0xa600
+bdmlib_write_block size 0x200 to adr 0xa800
+bdmlib_write_block size 0x200 to adr 0xaa00
+bdmlib_write_block size 0x200 to adr 0xac00
+bdmlib_write_block size 0x200 to adr 0xae00
+bdmlib_write_block size 0x200 to adr 0xb000
+bdmlib_write_block size 0x200 to adr 0xb200
+bdmlib_write_block size 0x200 to adr 0xb400
+bdmlib_write_block size 0x200 to adr 0xb600
+bdmlib_write_block size 0x200 to adr 0xb800
+bdmlib_write_block size 0x200 to adr 0xba00
+bdmlib_write_block size 0x200 to adr 0xbc00
+bdmlib_write_block size 0x200 to adr 0xbe00
+bdmlib_write_block size 0x200 to adr 0xc000
+bdmlib_write_block size 0x200 to adr 0xc200
+bdmlib_write_block size 0x200 to adr 0xc400
+bdmlib_write_block size 0x200 to adr 0xc600
+bdmlib_write_block size 0x200 to adr 0xc800
+bdmlib_write_block size 0x200 to adr 0xca00
+bdmlib_write_block size 0x200 to adr 0xcc00
+bdmlib_write_block size 0x200 to adr 0xce00
+bdmlib_write_block size 0x200 to adr 0xd000
+bdmlib_write_block size 0x200 to adr 0xd200
+bdmlib_write_block size 0x200 to adr 0xd400
+bdmlib_write_block size 0x200 to adr 0xd600
+bdmlib_write_block size 0x200 to adr 0xd800
+bdmlib_write_block size 0x200 to adr 0xda00
+bdmlib_write_block size 0x200 to adr 0xdc00
+bdmlib_write_block size 0x200 to adr 0xde00
+bdmlib_write_block size 0x200 to adr 0xe000
+bdmlib_write_block size 0x200 to adr 0xe200
+bdmlib_write_block size 0x200 to adr 0xe400
+bdmlib_write_block size 0x200 to adr 0xe600
+bdmlib_write_block size 0x200 to adr 0xe800
+bdmlib_write_block size 0x200 to adr 0xea00
+bdmlib_write_block size 0x200 to adr 0xec00
+bdmlib_write_block size 0x200 to adr 0xee00
+bdmlib_write_block size 0x200 to adr 0xf000
+bdmlib_write_block size 0x200 to adr 0xf200
+bdmlib_write_block size 0x200 to adr 0xf400
+bdmlib_write_block size 0x200 to adr 0xf600
+bdmlib_write_block size 0x200 to adr 0xf800
+bdmlib_write_block size 0x200 to adr 0xfa00
+bdmlib_write_block size 0x200 to adr 0xfc00
+bdmlib_write_block size 0x200 to adr 0xfe00
+bdmlib_write_block size 0x200 to adr 0x10000
+bdmlib_write_block size 0x200 to adr 0x10200
+bdmlib_write_block size 0x200 to adr 0x10400
+bdmlib_write_block size 0x200 to adr 0x10600
+bdmlib_write_block size 0x200 to adr 0x10800
+bdmlib_write_block size 0x200 to adr 0x10a00
+bdmlib_write_block size 0x200 to adr 0x10c00
+bdmlib_write_block size 0x200 to adr 0x10e00
+bdmlib_write_block size 0x200 to adr 0x11000
+bdmlib_write_block size 0x200 to adr 0x11200
+bdmlib_write_block size 0x200 to adr 0x11400
+bdmlib_write_block size 0x200 to adr 0x11600
+bdmlib_write_block size 0x200 to adr 0x11800
+bdmlib_write_block size 0x200 to adr 0x11a00
+bdmlib_write_block size 0x200 to adr 0x11c00
+bdmlib_write_block size 0x200 to adr 0x11e00
+bdmlib_write_block size 0x200 to adr 0x12000
+bdmlib_write_block size 0x200 to adr 0x12200
+bdmlib_write_block size 0x200 to adr 0x12400
+bdmlib_write_block size 0x200 to adr 0x12600
+bdmlib_write_block size 0x200 to adr 0x12800
+bdmlib_write_block size 0x200 to adr 0x12a00
+bdmlib_write_block size 0x200 to adr 0x12c00
+bdmlib_write_block size 0x200 to adr 0x12e00
+bdmlib_write_block size 0x200 to adr 0x13000
+bdmlib_write_block size 0x200 to adr 0x13200
+bdmlib_write_block size 0x174 to adr 0x13400
+bdmlib_load_section:
+	section .data index 1
+	flags 0x243 raw_size 2796 cooked_size 0
+	vma 0x13574 lma 0x13574 output_offset 0
+bdmlib_write_block size 0x200 to adr 0x13574
+bdmlib_write_block size 0x200 to adr 0x13774
+bdmlib_write_block size 0x200 to adr 0x13974
+bdmlib_write_block size 0x200 to adr 0x13b74
+bdmlib_write_block size 0x200 to adr 0x13d74
+bdmlib_write_block size 0xec to adr 0x13f74
+bdmlib_load_section:
+	section .bss index 2
+	flags 0x1 raw_size 23720 cooked_size 0
+	vma 0x14060 lma 0x14060 output_offset 0
+bdmlib_load_section:
+	section .stab index 3
+	flags 0x10600 raw_size 73356 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 4
+	flags 0x10600 raw_size 29630 cooked_size 0
+	vma 0 lma 0 output_offset 0
+GDB: bdm_resume: pid -1 step=1, sig=0
+GDB: 	getting psw 2204 setting to 2704
+GDB: bdm_step_chip at pc=0xf00f8a
+GDB: bdm_step_chip
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0 = (hi 0 lo 0)
+GDB: HW Breakpoint entered
+GDB: bdm_fetch_register 17
+GDB: bdm_insert_breakpoints at 0x2b8c 
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b8c  cont 0x3900
+bdmlib_read_var size 0 from adr 0x2b8d  cont 0x7900
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 1
+bdmlib_write_mem: addr 0x2b8c cont 0x4a
+bdmlib_write_mem: addr 0x2b8d cont 0xfffffffa
+GDB: bdm_resume: pid -1 step=0, sig=0
+GDB: 	setting newpsw 2704 setting to 2204
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0x1 = (hi 0 lo 0x1)
+GDB: we have re-entered bdm-mode
+GDB: bdm_analyze_exception: val_h = 0 (should be 0x0)
+GDB: 	bkpt found at (pcc) = 0x2b8c
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_remove_breakpoint at 0x2b8c 
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 1
+bdmlib_write_mem: addr 0x2b8c cont 0
+bdmlib_write_mem: addr 0x2b8d cont 0x79
+GDB: bdm_resume: pid -1 step=1, sig=0
+GDB: 	getting psw 2000 setting to 2700
+GDB: bdm_step_chip at pc=0x2b8c
+GDB: bdm_step_chip
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0 = (hi 0 lo 0)
+GDB: HW Breakpoint entered
+GDB: bdm_fetch_register 17
+GDB: bdm_insert_breakpoints at 0x2b8c 
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 0
+bdmlib_read_var size 0 from adr 0x2b8c  cont 0x7900
+bdmlib_read_var size 0 from adr 0x2b8d  cont 0x7900
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 1
+bdmlib_write_mem: addr 0x2b8c cont 0x4a
+error! bdmlib_write_var: write returns -1 errno 614
+bdmlib_write_var: verify read return val expected 2 is -1 errno 614
+GDB: bdm_xfer_inferior_memory memaddr 0x2b8c len 2 write 1
+bdmlib_write_mem: addr 0x2b8c cont 0x4a
+error! bdmlib_write_var: write returns -1 errno 614
+bdmlib_write_var: verify read return val expected 2 is -1 errno 614
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_fetch_register 17
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_create_inferior: execfile /projects/cubeos/src/init.coff args=, env=USERNAME=root
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /projects/cubeos/src/init.coff
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /projects/cubeos/src/init.coff suffix 1
+	no macro file found
+bdmlib_load_section:
+	section .text index 0
+	flags 0x223 raw_size 79216 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_write_block size 0x200 to adr 0
+bdmlib_write_block size 0x200 to adr 0x200
+bdmlib_write_block size 0x200 to adr 0x400
+bdmlib_write_block size 0x200 to adr 0x600
+bdmlib_write_block size 0x200 to adr 0x800
+bdmlib_write_block size 0x200 to adr 0xa00
+bdmlib_write_block size 0x200 to adr 0xc00
+bdmlib_write_block size 0x200 to adr 0xe00
+bdmlib_write_block size 0x200 to adr 0x1000
+bdmlib_write_block size 0x200 to adr 0x1200
+bdmlib_write_block size 0x200 to adr 0x1400
+bdmlib_write_block size 0x200 to adr 0x1600
+bdmlib_write_block size 0x200 to adr 0x1800
+bdmlib_write_block size 0x200 to adr 0x1a00
+bdmlib_write_block size 0x200 to adr 0x1c00
+bdmlib_write_block size 0x200 to adr 0x1e00
+bdmlib_write_block size 0x200 to adr 0x2000
+bdmlib_write_block size 0x200 to adr 0x2200
+bdmlib_write_block size 0x200 to adr 0x2400
+bdmlib_write_block size 0x200 to adr 0x2600
+bdmlib_write_block size 0x200 to adr 0x2800
+bdmlib_write_block size 0x200 to adr 0x2a00
+bdmlib_write_block size 0x200 to adr 0x2c00
+bdmlib_write_block size 0x200 to adr 0x2e00
+bdmlib_write_block size 0x200 to adr 0x3000
+bdmlib_write_block size 0x200 to adr 0x3200
+bdmlib_write_block size 0x200 to adr 0x3400
+bdmlib_write_block size 0x200 to adr 0x3600
+bdmlib_write_block size 0x200 to adr 0x3800
+bdmlib_write_block size 0x200 to adr 0x3a00
+bdmlib_write_block size 0x200 to adr 0x3c00
+bdmlib_write_block size 0x200 to adr 0x3e00
+bdmlib_write_block size 0x200 to adr 0x4000
+bdmlib_write_block size 0x200 to adr 0x4200
+bdmlib_write_block size 0x200 to adr 0x4400
+bdmlib_write_block size 0x200 to adr 0x4600
+bdmlib_write_block size 0x200 to adr 0x4800
+bdmlib_write_block size 0x200 to adr 0x4a00
+bdmlib_write_block size 0x200 to adr 0x4c00
+bdmlib_write_block size 0x200 to adr 0x4e00
+bdmlib_write_block size 0x200 to adr 0x5000
+bdmlib_write_block size 0x200 to adr 0x5200
+bdmlib_write_block size 0x200 to adr 0x5400
+bdmlib_write_block size 0x200 to adr 0x5600
+bdmlib_write_block size 0x200 to adr 0x5800
+bdmlib_write_block size 0x200 to adr 0x5a00
+bdmlib_write_block size 0x200 to adr 0x5c00
+bdmlib_write_block size 0x200 to adr 0x5e00
+bdmlib_write_block size 0x200 to adr 0x6000
+bdmlib_write_block size 0x200 to adr 0x6200
+bdmlib_write_block size 0x200 to adr 0x6400
+bdmlib_write_block size 0x200 to adr 0x6600
+bdmlib_write_block size 0x200 to adr 0x6800
+bdmlib_write_block size 0x200 to adr 0x6a00
+bdmlib_write_block size 0x200 to adr 0x6c00
+bdmlib_write_block size 0x200 to adr 0x6e00
+bdmlib_write_block size 0x200 to adr 0x7000
+bdmlib_write_block size 0x200 to adr 0x7200
+bdmlib_write_block size 0x200 to adr 0x7400
+bdmlib_write_block size 0x200 to adr 0x7600
+bdmlib_write_block size 0x200 to adr 0x7800
+bdmlib_write_block size 0x200 to adr 0x7a00
+bdmlib_write_block size 0x200 to adr 0x7c00
+bdmlib_write_block size 0x200 to adr 0x7e00
+bdmlib_write_block size 0x200 to adr 0x8000
+bdmlib_write_block size 0x200 to adr 0x8200
+bdmlib_write_block size 0x200 to adr 0x8400
+bdmlib_write_block size 0x200 to adr 0x8600
+bdmlib_write_block size 0x200 to adr 0x8800
+bdmlib_write_block size 0x200 to adr 0x8a00
+bdmlib_write_block size 0x200 to adr 0x8c00
+bdmlib_write_block size 0x200 to adr 0x8e00
+bdmlib_write_block size 0x200 to adr 0x9000
+bdmlib_write_block size 0x200 to adr 0x9200
+bdmlib_write_block size 0x200 to adr 0x9400
+bdmlib_write_block size 0x200 to adr 0x9600
+bdmlib_write_block size 0x200 to adr 0x9800
+bdmlib_write_block size 0x200 to adr 0x9a00
+bdmlib_write_block size 0x200 to adr 0x9c00
+bdmlib_write_block size 0x200 to adr 0x9e00
+bdmlib_write_block size 0x200 to adr 0xa000
+bdmlib_write_block size 0x200 to adr 0xa200
+bdmlib_write_block size 0x200 to adr 0xa400
+bdmlib_write_block size 0x200 to adr 0xa600
+bdmlib_write_block size 0x200 to adr 0xa800
+bdmlib_write_block size 0x200 to adr 0xaa00
+bdmlib_write_block size 0x200 to adr 0xac00
+bdmlib_write_block size 0x200 to adr 0xae00
+bdmlib_write_block size 0x200 to adr 0xb000
+bdmlib_write_block size 0x200 to adr 0xb200
+bdmlib_write_block size 0x200 to adr 0xb400
+bdmlib_write_block size 0x200 to adr 0xb600
+bdmlib_write_block size 0x200 to adr 0xb800
+bdmlib_write_block size 0x200 to adr 0xba00
+bdmlib_write_block size 0x200 to adr 0xbc00
+bdmlib_write_block size 0x200 to adr 0xbe00
+bdmlib_write_block size 0x200 to adr 0xc000
+bdmlib_write_block size 0x200 to adr 0xc200
+bdmlib_write_block size 0x200 to adr 0xc400
+bdmlib_write_block size 0x200 to adr 0xc600
+bdmlib_write_block size 0x200 to adr 0xc800
+bdmlib_write_block size 0x200 to adr 0xca00
+bdmlib_write_block size 0x200 to adr 0xcc00
+bdmlib_write_block size 0x200 to adr 0xce00
+bdmlib_write_block size 0x200 to adr 0xd000
+bdmlib_write_block size 0x200 to adr 0xd200
+bdmlib_write_block size 0x200 to adr 0xd400
+bdmlib_write_block size 0x200 to adr 0xd600
+bdmlib_write_block size 0x200 to adr 0xd800
+bdmlib_write_block size 0x200 to adr 0xda00
+bdmlib_write_block size 0x200 to adr 0xdc00
+bdmlib_write_block size 0x200 to adr 0xde00
+bdmlib_write_block size 0x200 to adr 0xe000
+bdmlib_write_block size 0x200 to adr 0xe200
+bdmlib_write_block size 0x200 to adr 0xe400
+bdmlib_write_block size 0x200 to adr 0xe600
+bdmlib_write_block size 0x200 to adr 0xe800
+bdmlib_write_block size 0x200 to adr 0xea00
+bdmlib_write_block size 0x200 to adr 0xec00
+bdmlib_write_block size 0x200 to adr 0xee00
+bdmlib_write_block size 0x200 to adr 0xf000
+bdmlib_write_block size 0x200 to adr 0xf200
+bdmlib_write_block size 0x200 to adr 0xf400
+bdmlib_write_block size 0x200 to adr 0xf600
+bdmlib_write_block size 0x200 to adr 0xf800
+bdmlib_write_block size 0x200 to adr 0xfa00
+bdmlib_write_block size 0x200 to adr 0xfc00
+bdmlib_write_block size 0x200 to adr 0xfe00
+bdmlib_write_block size 0x200 to adr 0x10000
+bdmlib_write_block size 0x200 to adr 0x10200
+bdmlib_write_block size 0x200 to adr 0x10400
+bdmlib_write_block size 0x200 to adr 0x10600
+bdmlib_write_block size 0x200 to adr 0x10800
+bdmlib_write_block size 0x200 to adr 0x10a00
+bdmlib_write_block size 0x200 to adr 0x10c00
+bdmlib_write_block size 0x200 to adr 0x10e00
+bdmlib_write_block size 0x200 to adr 0x11000
+bdmlib_write_block size 0x200 to adr 0x11200
+bdmlib_write_block size 0x200 to adr 0x11400
+bdmlib_write_block size 0x200 to adr 0x11600
+bdmlib_write_block size 0x200 to adr 0x11800
+bdmlib_write_block size 0x200 to adr 0x11a00
+bdmlib_write_block size 0x200 to adr 0x11c00
+bdmlib_write_block size 0x200 to adr 0x11e00
+bdmlib_write_block size 0x200 to adr 0x12000
+bdmlib_write_block size 0x200 to adr 0x12200
+bdmlib_write_block size 0x200 to adr 0x12400
+bdmlib_write_block size 0x200 to adr 0x12600
+bdmlib_write_block size 0x200 to adr 0x12800
+bdmlib_write_block size 0x200 to adr 0x12a00
+bdmlib_write_block size 0x200 to adr 0x12c00
+bdmlib_write_block size 0x200 to adr 0x12e00
+bdmlib_write_block size 0x200 to adr 0x13000
+bdmlib_write_block size 0x200 to adr 0x13200
+bdmlib_write_block size 0x170 to adr 0x13400
+bdmlib_load_section:
+	section .data index 1
+	flags 0x243 raw_size 2796 cooked_size 0
+	vma 0x13570 lma 0x13570 output_offset 0
+bdmlib_write_block size 0x200 to adr 0x13570
+bdmlib_write_block size 0x200 to adr 0x13770
+bdmlib_write_block size 0x200 to adr 0x13970
+bdmlib_write_block size 0x200 to adr 0x13b70
+bdmlib_write_block size 0x200 to adr 0x13d70
+bdmlib_write_block size 0xec to adr 0x13f70
+bdmlib_load_section:
+	section .bss index 2
+	flags 0x1 raw_size 23720 cooked_size 0
+	vma 0x1405c lma 0x1405c output_offset 0
+bdmlib_load_section:
+	section .stab index 3
+	flags 0x10600 raw_size 73356 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 4
+	flags 0x10600 raw_size 29630 cooked_size 0
+	vma 0 lma 0 output_offset 0
+GDB: bdm_fetch_register 17
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_fetch_register 17
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_create_inferior: execfile /projects/cubeos/src/init.coff args=, env=USERNAME=root
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /projects/cubeos/src/init.coff
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /projects/cubeos/src/init.coff suffix 1
+	no macro file found
+bdmlib_load_section:
+	section .text index 0
+	flags 0x223 raw_size 79228 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_write_block size 0x200 to adr 0
+bdmlib_write_block size 0x200 to adr 0x200
+bdmlib_write_block size 0x200 to adr 0x400
+bdmlib_write_block size 0x200 to adr 0x600
+bdmlib_write_block size 0x200 to adr 0x800
+bdmlib_write_block size 0x200 to adr 0xa00
+bdmlib_write_block size 0x200 to adr 0xc00
+bdmlib_write_block size 0x200 to adr 0xe00
+bdmlib_write_block size 0x200 to adr 0x1000
+bdmlib_write_block size 0x200 to adr 0x1200
+bdmlib_write_block size 0x200 to adr 0x1400
+bdmlib_write_block size 0x200 to adr 0x1600
+bdmlib_write_block size 0x200 to adr 0x1800
+bdmlib_write_block size 0x200 to adr 0x1a00
+bdmlib_write_block size 0x200 to adr 0x1c00
+bdmlib_write_block size 0x200 to adr 0x1e00
+bdmlib_write_block size 0x200 to adr 0x2000
+bdmlib_write_block size 0x200 to adr 0x2200
+bdmlib_write_block size 0x200 to adr 0x2400
+bdmlib_write_block size 0x200 to adr 0x2600
+bdmlib_write_block size 0x200 to adr 0x2800
+bdmlib_write_block size 0x200 to adr 0x2a00
+bdmlib_write_block size 0x200 to adr 0x2c00
+bdmlib_write_block size 0x200 to adr 0x2e00
+bdmlib_write_block size 0x200 to adr 0x3000
+bdmlib_write_block size 0x200 to adr 0x3200
+bdmlib_write_block size 0x200 to adr 0x3400
+bdmlib_write_block size 0x200 to adr 0x3600
+bdmlib_write_block size 0x200 to adr 0x3800
+bdmlib_write_block size 0x200 to adr 0x3a00
+bdmlib_write_block size 0x200 to adr 0x3c00
+bdmlib_write_block size 0x200 to adr 0x3e00
+bdmlib_write_block size 0x200 to adr 0x4000
+bdmlib_write_block size 0x200 to adr 0x4200
+bdmlib_write_block size 0x200 to adr 0x4400
+bdmlib_write_block size 0x200 to adr 0x4600
+bdmlib_write_block size 0x200 to adr 0x4800
+bdmlib_write_block size 0x200 to adr 0x4a00
+bdmlib_write_block size 0x200 to adr 0x4c00
+bdmlib_write_block size 0x200 to adr 0x4e00
+bdmlib_write_block size 0x200 to adr 0x5000
+bdmlib_write_block size 0x200 to adr 0x5200
+bdmlib_write_block size 0x200 to adr 0x5400
+bdmlib_write_block size 0x200 to adr 0x5600
+bdmlib_write_block size 0x200 to adr 0x5800
+bdmlib_write_block size 0x200 to adr 0x5a00
+bdmlib_write_block size 0x200 to adr 0x5c00
+bdmlib_write_block size 0x200 to adr 0x5e00
+bdmlib_write_block size 0x200 to adr 0x6000
+bdmlib_write_block size 0x200 to adr 0x6200
+bdmlib_write_block size 0x200 to adr 0x6400
+bdmlib_write_block size 0x200 to adr 0x6600
+bdmlib_write_block size 0x200 to adr 0x6800
+bdmlib_write_block size 0x200 to adr 0x6a00
+bdmlib_write_block size 0x200 to adr 0x6c00
+bdmlib_write_block size 0x200 to adr 0x6e00
+bdmlib_write_block size 0x200 to adr 0x7000
+bdmlib_write_block size 0x200 to adr 0x7200
+bdmlib_write_block size 0x200 to adr 0x7400
+bdmlib_write_block size 0x200 to adr 0x7600
+bdmlib_write_block size 0x200 to adr 0x7800
+bdmlib_write_block size 0x200 to adr 0x7a00
+bdmlib_write_block size 0x200 to adr 0x7c00
+bdmlib_write_block size 0x200 to adr 0x7e00
+bdmlib_write_block size 0x200 to adr 0x8000
+bdmlib_write_block size 0x200 to adr 0x8200
+bdmlib_write_block size 0x200 to adr 0x8400
+bdmlib_write_block size 0x200 to adr 0x8600
+bdmlib_write_block size 0x200 to adr 0x8800
+bdmlib_write_block size 0x200 to adr 0x8a00
+bdmlib_write_block size 0x200 to adr 0x8c00
+bdmlib_write_block size 0x200 to adr 0x8e00
+bdmlib_write_block size 0x200 to adr 0x9000
+bdmlib_write_block size 0x200 to adr 0x9200
+bdmlib_write_block size 0x200 to adr 0x9400
+bdmlib_write_block size 0x200 to adr 0x9600
+bdmlib_write_block size 0x200 to adr 0x9800
+bdmlib_write_block size 0x200 to adr 0x9a00
+bdmlib_write_block size 0x200 to adr 0x9c00
+bdmlib_write_block size 0x200 to adr 0x9e00
+bdmlib_write_block size 0x200 to adr 0xa000
+bdmlib_write_block size 0x200 to adr 0xa200
+bdmlib_write_block size 0x200 to adr 0xa400
+bdmlib_write_block size 0x200 to adr 0xa600
+bdmlib_write_block size 0x200 to adr 0xa800
+bdmlib_write_block size 0x200 to adr 0xaa00
+bdmlib_write_block size 0x200 to adr 0xac00
+bdmlib_write_block size 0x200 to adr 0xae00
+bdmlib_write_block size 0x200 to adr 0xb000
+bdmlib_write_block size 0x200 to adr 0xb200
+bdmlib_write_block size 0x200 to adr 0xb400
+bdmlib_write_block size 0x200 to adr 0xb600
+bdmlib_write_block size 0x200 to adr 0xb800
+bdmlib_write_block size 0x200 to adr 0xba00
+bdmlib_write_block size 0x200 to adr 0xbc00
+bdmlib_write_block size 0x200 to adr 0xbe00
+bdmlib_write_block size 0x200 to adr 0xc000
+bdmlib_write_block size 0x200 to adr 0xc200
+bdmlib_write_block size 0x200 to adr 0xc400
+bdmlib_write_block size 0x200 to adr 0xc600
+bdmlib_write_block size 0x200 to adr 0xc800
+bdmlib_write_block size 0x200 to adr 0xca00
+bdmlib_write_block size 0x200 to adr 0xcc00
+bdmlib_write_block size 0x200 to adr 0xce00
+bdmlib_write_block size 0x200 to adr 0xd000
+bdmlib_write_block size 0x200 to adr 0xd200
+bdmlib_write_block size 0x200 to adr 0xd400
+bdmlib_write_block size 0x200 to adr 0xd600
+bdmlib_write_block size 0x200 to adr 0xd800
+bdmlib_write_block size 0x200 to adr 0xda00
+bdmlib_write_block size 0x200 to adr 0xdc00
+bdmlib_write_block size 0x200 to adr 0xde00
+bdmlib_write_block size 0x200 to adr 0xe000
+bdmlib_write_block size 0x200 to adr 0xe200
+bdmlib_write_block size 0x200 to adr 0xe400
+bdmlib_write_block size 0x200 to adr 0xe600
+bdmlib_write_block size 0x200 to adr 0xe800
+bdmlib_write_block size 0x200 to adr 0xea00
+bdmlib_write_block size 0x200 to adr 0xec00
+bdmlib_write_block size 0x200 to adr 0xee00
+bdmlib_write_block size 0x200 to adr 0xf000
+bdmlib_write_block size 0x200 to adr 0xf200
+bdmlib_write_block size 0x200 to adr 0xf400
+bdmlib_write_block size 0x200 to adr 0xf600
+bdmlib_write_block size 0x200 to adr 0xf800
+bdmlib_write_block size 0x200 to adr 0xfa00
+bdmlib_write_block size 0x200 to adr 0xfc00
+bdmlib_write_block size 0x200 to adr 0xfe00
+bdmlib_write_block size 0x200 to adr 0x10000
+bdmlib_write_block size 0x200 to adr 0x10200
+bdmlib_write_block size 0x200 to adr 0x10400
+bdmlib_write_block size 0x200 to adr 0x10600
+bdmlib_write_block size 0x200 to adr 0x10800
+bdmlib_write_block size 0x200 to adr 0x10a00
+bdmlib_write_block size 0x200 to adr 0x10c00
+bdmlib_write_block size 0x200 to adr 0x10e00
+bdmlib_write_block size 0x200 to adr 0x11000
+bdmlib_write_block size 0x200 to adr 0x11200
+bdmlib_write_block size 0x200 to adr 0x11400
+bdmlib_write_block size 0x200 to adr 0x11600
+bdmlib_write_block size 0x200 to adr 0x11800
+bdmlib_write_block size 0x200 to adr 0x11a00
+bdmlib_write_block size 0x200 to adr 0x11c00
+bdmlib_write_block size 0x200 to adr 0x11e00
+bdmlib_write_block size 0x200 to adr 0x12000
+bdmlib_write_block size 0x200 to adr 0x12200
+bdmlib_write_block size 0x200 to adr 0x12400
+bdmlib_write_block size 0x200 to adr 0x12600
+bdmlib_write_block size 0x200 to adr 0x12800
+bdmlib_write_block size 0x200 to adr 0x12a00
+bdmlib_write_block size 0x200 to adr 0x12c00
+bdmlib_write_block size 0x200 to adr 0x12e00
+bdmlib_write_block size 0x200 to adr 0x13000
+bdmlib_write_block size 0x200 to adr 0x13200
+bdmlib_write_block size 0x17c to adr 0x13400
+bdmlib_load_section:
+	section .data index 1
+	flags 0x243 raw_size 2796 cooked_size 0
+	vma 0x1357c lma 0x1357c output_offset 0
+bdmlib_write_block size 0x200 to adr 0x1357c
+bdmlib_write_block size 0x200 to adr 0x1377c
+bdmlib_write_block size 0x200 to adr 0x1397c
+bdmlib_write_block size 0x200 to adr 0x13b7c
+bdmlib_write_block size 0x200 to adr 0x13d7c
+bdmlib_write_block size 0xec to adr 0x13f7c
+bdmlib_load_section:
+	section .bss index 2
+	flags 0x1 raw_size 23720 cooked_size 0
+	vma 0x14068 lma 0x14068 output_offset 0
+bdmlib_load_section:
+	section .stab index 3
+	flags 0x10600 raw_size 73356 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 4
+	flags 0x10600 raw_size 29630 cooked_size 0
+	vma 0 lma 0 output_offset 0
+GDB: bdm_fetch_register 17
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_fetch_register 17
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_create_inferior: execfile /projects/cubeos/src/init.coff args=, env=USERNAME=root
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /projects/cubeos/src/init.coff
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /projects/cubeos/src/init.coff suffix 1
+	no macro file found
+bdmlib_load_section:
+	section .text index 0
+	flags 0x223 raw_size 79248 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_write_block size 0x200 to adr 0
+bdmlib_write_block size 0x200 to adr 0x200
+bdmlib_write_block size 0x200 to adr 0x400
+bdmlib_write_block size 0x200 to adr 0x600
+bdmlib_write_block size 0x200 to adr 0x800
+bdmlib_write_block size 0x200 to adr 0xa00
+bdmlib_write_block size 0x200 to adr 0xc00
+bdmlib_write_block size 0x200 to adr 0xe00
+bdmlib_write_block size 0x200 to adr 0x1000
+bdmlib_write_block size 0x200 to adr 0x1200
+bdmlib_write_block size 0x200 to adr 0x1400
+bdmlib_write_block size 0x200 to adr 0x1600
+bdmlib_write_block size 0x200 to adr 0x1800
+bdmlib_write_block size 0x200 to adr 0x1a00
+bdmlib_write_block size 0x200 to adr 0x1c00
+bdmlib_write_block size 0x200 to adr 0x1e00
+bdmlib_write_block size 0x200 to adr 0x2000
+bdmlib_write_block size 0x200 to adr 0x2200
+bdmlib_write_block size 0x200 to adr 0x2400
+bdmlib_write_block size 0x200 to adr 0x2600
+bdmlib_write_block size 0x200 to adr 0x2800
+bdmlib_write_block size 0x200 to adr 0x2a00
+bdmlib_write_block size 0x200 to adr 0x2c00
+bdmlib_write_block size 0x200 to adr 0x2e00
+bdmlib_write_block size 0x200 to adr 0x3000
+bdmlib_write_block size 0x200 to adr 0x3200
+bdmlib_write_block size 0x200 to adr 0x3400
+bdmlib_write_block size 0x200 to adr 0x3600
+bdmlib_write_block size 0x200 to adr 0x3800
+bdmlib_write_block size 0x200 to adr 0x3a00
+bdmlib_write_block size 0x200 to adr 0x3c00
+bdmlib_write_block size 0x200 to adr 0x3e00
+bdmlib_write_block size 0x200 to adr 0x4000
+bdmlib_write_block size 0x200 to adr 0x4200
+bdmlib_write_block size 0x200 to adr 0x4400
+bdmlib_write_block size 0x200 to adr 0x4600
+bdmlib_write_block size 0x200 to adr 0x4800
+bdmlib_write_block size 0x200 to adr 0x4a00
+bdmlib_write_block size 0x200 to adr 0x4c00
+bdmlib_write_block size 0x200 to adr 0x4e00
+bdmlib_write_block size 0x200 to adr 0x5000
+bdmlib_write_block size 0x200 to adr 0x5200
+bdmlib_write_block size 0x200 to adr 0x5400
+bdmlib_write_block size 0x200 to adr 0x5600
+bdmlib_write_block size 0x200 to adr 0x5800
+bdmlib_write_block size 0x200 to adr 0x5a00
+bdmlib_write_block size 0x200 to adr 0x5c00
+bdmlib_write_block size 0x200 to adr 0x5e00
+bdmlib_write_block size 0x200 to adr 0x6000
+bdmlib_write_block size 0x200 to adr 0x6200
+bdmlib_write_block size 0x200 to adr 0x6400
+bdmlib_write_block size 0x200 to adr 0x6600
+bdmlib_write_block size 0x200 to adr 0x6800
+bdmlib_write_block size 0x200 to adr 0x6a00
+bdmlib_write_block size 0x200 to adr 0x6c00
+bdmlib_write_block size 0x200 to adr 0x6e00
+bdmlib_write_block size 0x200 to adr 0x7000
+bdmlib_write_block size 0x200 to adr 0x7200
+bdmlib_write_block size 0x200 to adr 0x7400
+bdmlib_write_block size 0x200 to adr 0x7600
+bdmlib_write_block size 0x200 to adr 0x7800
+bdmlib_write_block size 0x200 to adr 0x7a00
+bdmlib_write_block size 0x200 to adr 0x7c00
+bdmlib_write_block size 0x200 to adr 0x7e00
+bdmlib_write_block size 0x200 to adr 0x8000
+bdmlib_write_block size 0x200 to adr 0x8200
+bdmlib_write_block size 0x200 to adr 0x8400
+bdmlib_write_block size 0x200 to adr 0x8600
+bdmlib_write_block size 0x200 to adr 0x8800
+bdmlib_write_block size 0x200 to adr 0x8a00
+bdmlib_write_block size 0x200 to adr 0x8c00
+bdmlib_write_block size 0x200 to adr 0x8e00
+bdmlib_write_block size 0x200 to adr 0x9000
+bdmlib_write_block size 0x200 to adr 0x9200
+bdmlib_write_block size 0x200 to adr 0x9400
+bdmlib_write_block size 0x200 to adr 0x9600
+bdmlib_write_block size 0x200 to adr 0x9800
+bdmlib_write_block size 0x200 to adr 0x9a00
+bdmlib_write_block size 0x200 to adr 0x9c00
+bdmlib_write_block size 0x200 to adr 0x9e00
+bdmlib_write_block size 0x200 to adr 0xa000
+bdmlib_write_block size 0x200 to adr 0xa200
+bdmlib_write_block size 0x200 to adr 0xa400
+bdmlib_write_block size 0x200 to adr 0xa600
+bdmlib_write_block size 0x200 to adr 0xa800
+bdmlib_write_block size 0x200 to adr 0xaa00
+bdmlib_write_block size 0x200 to adr 0xac00
+bdmlib_write_block size 0x200 to adr 0xae00
+bdmlib_write_block size 0x200 to adr 0xb000
+bdmlib_write_block size 0x200 to adr 0xb200
+bdmlib_write_block size 0x200 to adr 0xb400
+bdmlib_write_block size 0x200 to adr 0xb600
+bdmlib_write_block size 0x200 to adr 0xb800
+bdmlib_write_block size 0x200 to adr 0xba00
+bdmlib_write_block size 0x200 to adr 0xbc00
+bdmlib_write_block size 0x200 to adr 0xbe00
+bdmlib_write_block size 0x200 to adr 0xc000
+bdmlib_write_block size 0x200 to adr 0xc200
+bdmlib_write_block size 0x200 to adr 0xc400
+bdmlib_write_block size 0x200 to adr 0xc600
+bdmlib_write_block size 0x200 to adr 0xc800
+bdmlib_write_block size 0x200 to adr 0xca00
+bdmlib_write_block size 0x200 to adr 0xcc00
+bdmlib_write_block size 0x200 to adr 0xce00
+bdmlib_write_block size 0x200 to adr 0xd000
+bdmlib_write_block size 0x200 to adr 0xd200
+bdmlib_write_block size 0x200 to adr 0xd400
+bdmlib_write_block size 0x200 to adr 0xd600
+bdmlib_write_block size 0x200 to adr 0xd800
+bdmlib_write_block size 0x200 to adr 0xda00
+bdmlib_write_block size 0x200 to adr 0xdc00
+bdmlib_write_block size 0x200 to adr 0xde00
+bdmlib_write_block size 0x200 to adr 0xe000
+bdmlib_write_block size 0x200 to adr 0xe200
+bdmlib_write_block size 0x200 to adr 0xe400
+bdmlib_write_block size 0x200 to adr 0xe600
+bdmlib_write_block size 0x200 to adr 0xe800
+bdmlib_write_block size 0x200 to adr 0xea00
+bdmlib_write_block size 0x200 to adr 0xec00
+bdmlib_write_block size 0x200 to adr 0xee00
+bdmlib_write_block size 0x200 to adr 0xf000
+bdmlib_write_block size 0x200 to adr 0xf200
+bdmlib_write_block size 0x200 to adr 0xf400
+bdmlib_write_block size 0x200 to adr 0xf600
+bdmlib_write_block size 0x200 to adr 0xf800
+bdmlib_write_block size 0x200 to adr 0xfa00
+bdmlib_write_block size 0x200 to adr 0xfc00
+bdmlib_write_block size 0x200 to adr 0xfe00
+bdmlib_write_block size 0x200 to adr 0x10000
+bdmlib_write_block size 0x200 to adr 0x10200
+bdmlib_write_block size 0x200 to adr 0x10400
+bdmlib_write_block size 0x200 to adr 0x10600
+bdmlib_write_block size 0x200 to adr 0x10800
+bdmlib_write_block size 0x200 to adr 0x10a00
+bdmlib_write_block size 0x200 to adr 0x10c00
+bdmlib_write_block size 0x200 to adr 0x10e00
+bdmlib_write_block size 0x200 to adr 0x11000
+bdmlib_write_block size 0x200 to adr 0x11200
+bdmlib_write_block size 0x200 to adr 0x11400
+bdmlib_write_block size 0x200 to adr 0x11600
+bdmlib_write_block size 0x200 to adr 0x11800
+bdmlib_write_block size 0x200 to adr 0x11a00
+bdmlib_write_block size 0x200 to adr 0x11c00
+bdmlib_write_block size 0x200 to adr 0x11e00
+bdmlib_write_block size 0x200 to adr 0x12000
+bdmlib_write_block size 0x200 to adr 0x12200
+bdmlib_write_block size 0x200 to adr 0x12400
+bdmlib_write_block size 0x200 to adr 0x12600
+bdmlib_write_block size 0x200 to adr 0x12800
+bdmlib_write_block size 0x200 to adr 0x12a00
+bdmlib_write_block size 0x200 to adr 0x12c00
+bdmlib_write_block size 0x200 to adr 0x12e00
+bdmlib_write_block size 0x200 to adr 0x13000
+bdmlib_write_block size 0x200 to adr 0x13200
+bdmlib_write_block size 0x190 to adr 0x13400
+bdmlib_load_section:
+	section .data index 1
+	flags 0x243 raw_size 2796 cooked_size 0
+	vma 0x13590 lma 0x13590 output_offset 0
+bdmlib_write_block size 0x200 to adr 0x13590
+bdmlib_write_block size 0x200 to adr 0x13790
+bdmlib_write_block size 0x200 to adr 0x13990
+bdmlib_write_block size 0x200 to adr 0x13b90
+bdmlib_write_block size 0x200 to adr 0x13d90
+bdmlib_write_block size 0xec to adr 0x13f90
+bdmlib_load_section:
+	section .bss index 2
+	flags 0x1 raw_size 23720 cooked_size 0
+	vma 0x1407c lma 0x1407c output_offset 0
+bdmlib_load_section:
+	section .stab index 3
+	flags 0x10600 raw_size 73356 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 4
+	flags 0x10600 raw_size 29630 cooked_size 0
+	vma 0 lma 0 output_offset 0
+GDB: bdm_fetch_register 17
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_fetch_register 17
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_fetch_register 17
+GDB: bdm_resume: pid -1 step=0, sig=6
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_fetch_register 17
+GDB: bdm_reset
+bdmlib_reset ttcu 60000
+bdmlib_go
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
+GDB: bdm_create_inferior: execfile /projects/cubeos/src/init.coff args=, env=USERNAME=root
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /projects/cubeos/src/init.coff
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /projects/cubeos/src/init.coff suffix 1
+	no macro file found
+bdmlib_load_section:
+	section .text index 0
+	flags 0x223 raw_size 79292 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_write_block size 0x200 to adr 0
+bdmlib_write_block size 0x200 to adr 0x200
+bdmlib_write_block size 0x200 to adr 0x400
+bdmlib_write_block size 0x200 to adr 0x600
+bdmlib_write_block size 0x200 to adr 0x800
+bdmlib_write_block size 0x200 to adr 0xa00
+bdmlib_write_block size 0x200 to adr 0xc00
+bdmlib_write_block size 0x200 to adr 0xe00
+bdmlib_write_block size 0x200 to adr 0x1000
+bdmlib_write_block size 0x200 to adr 0x1200
+bdmlib_write_block size 0x200 to adr 0x1400
+bdmlib_write_block size 0x200 to adr 0x1600
+bdmlib_write_block size 0x200 to adr 0x1800
+bdmlib_write_block size 0x200 to adr 0x1a00
+bdmlib_write_block size 0x200 to adr 0x1c00
+bdmlib_write_block size 0x200 to adr 0x1e00
+bdmlib_write_block size 0x200 to adr 0x2000
+bdmlib_write_block size 0x200 to adr 0x2200
+bdmlib_write_block size 0x200 to adr 0x2400
+bdmlib_write_block size 0x200 to adr 0x2600
+bdmlib_write_block size 0x200 to adr 0x2800
+bdmlib_write_block size 0x200 to adr 0x2a00
+bdmlib_write_block size 0x200 to adr 0x2c00
+bdmlib_write_block size 0x200 to adr 0x2e00
+bdmlib_write_block size 0x200 to adr 0x3000
+bdmlib_write_block size 0x200 to adr 0x3200
+bdmlib_write_block size 0x200 to adr 0x3400
+bdmlib_write_block size 0x200 to adr 0x3600
+bdmlib_write_block size 0x200 to adr 0x3800
+bdmlib_write_block size 0x200 to adr 0x3a00
+bdmlib_write_block size 0x200 to adr 0x3c00
+bdmlib_write_block size 0x200 to adr 0x3e00
+bdmlib_write_block size 0x200 to adr 0x4000
+bdmlib_write_block size 0x200 to adr 0x4200
+bdmlib_write_block size 0x200 to adr 0x4400
+bdmlib_write_block size 0x200 to adr 0x4600
+bdmlib_write_block size 0x200 to adr 0x4800
+bdmlib_write_block size 0x200 to adr 0x4a00
+bdmlib_write_block size 0x200 to adr 0x4c00
+bdmlib_write_block size 0x200 to adr 0x4e00
+bdmlib_write_block size 0x200 to adr 0x5000
+bdmlib_write_block size 0x200 to adr 0x5200
+bdmlib_write_block size 0x200 to adr 0x5400
+bdmlib_write_block size 0x200 to adr 0x5600
+bdmlib_write_block size 0x200 to adr 0x5800
+bdmlib_write_block size 0x200 to adr 0x5a00
+bdmlib_write_block size 0x200 to adr 0x5c00
+bdmlib_write_block size 0x200 to adr 0x5e00
+bdmlib_write_block size 0x200 to adr 0x6000
+bdmlib_write_block size 0x200 to adr 0x6200
+bdmlib_write_block size 0x200 to adr 0x6400
+bdmlib_write_block size 0x200 to adr 0x6600
+bdmlib_write_block size 0x200 to adr 0x6800
+bdmlib_write_block size 0x200 to adr 0x6a00
+bdmlib_write_block size 0x200 to adr 0x6c00
+bdmlib_write_block size 0x200 to adr 0x6e00
+bdmlib_write_block size 0x200 to adr 0x7000
+bdmlib_write_block size 0x200 to adr 0x7200
+bdmlib_write_block size 0x200 to adr 0x7400
+bdmlib_write_block size 0x200 to adr 0x7600
+bdmlib_write_block size 0x200 to adr 0x7800
+bdmlib_write_block size 0x200 to adr 0x7a00
+bdmlib_write_block size 0x200 to adr 0x7c00
+bdmlib_write_block size 0x200 to adr 0x7e00
+bdmlib_write_block size 0x200 to adr 0x8000
+bdmlib_write_block size 0x200 to adr 0x8200
+bdmlib_write_block size 0x200 to adr 0x8400
+bdmlib_write_block size 0x200 to adr 0x8600
+bdmlib_write_block size 0x200 to adr 0x8800
+bdmlib_write_block size 0x200 to adr 0x8a00
+bdmlib_write_block size 0x200 to adr 0x8c00
+bdmlib_write_block size 0x200 to adr 0x8e00
+bdmlib_write_block size 0x200 to adr 0x9000
+bdmlib_write_block size 0x200 to adr 0x9200
+bdmlib_write_block size 0x200 to adr 0x9400
+bdmlib_write_block size 0x200 to adr 0x9600
+bdmlib_write_block size 0x200 to adr 0x9800
+bdmlib_write_block size 0x200 to adr 0x9a00
+bdmlib_write_block size 0x200 to adr 0x9c00
+bdmlib_write_block size 0x200 to adr 0x9e00
+bdmlib_write_block size 0x200 to adr 0xa000
+bdmlib_write_block size 0x200 to adr 0xa200
+bdmlib_write_block size 0x200 to adr 0xa400
+bdmlib_write_block size 0x200 to adr 0xa600
+bdmlib_write_block size 0x200 to adr 0xa800
+bdmlib_write_block size 0x200 to adr 0xaa00
+bdmlib_write_block size 0x200 to adr 0xac00
+bdmlib_write_block size 0x200 to adr 0xae00
+bdmlib_write_block size 0x200 to adr 0xb000
+bdmlib_write_block size 0x200 to adr 0xb200
+bdmlib_write_block size 0x200 to adr 0xb400
+bdmlib_write_block size 0x200 to adr 0xb600
+bdmlib_write_block size 0x200 to adr 0xb800
+bdmlib_write_block size 0x200 to adr 0xba00
+bdmlib_write_block size 0x200 to adr 0xbc00
+bdmlib_write_block size 0x200 to adr 0xbe00
+bdmlib_write_block size 0x200 to adr 0xc000
+bdmlib_write_block size 0x200 to adr 0xc200
+bdmlib_write_block size 0x200 to adr 0xc400
+bdmlib_write_block size 0x200 to adr 0xc600
+bdmlib_write_block size 0x200 to adr 0xc800
+bdmlib_write_block size 0x200 to adr 0xca00
+bdmlib_write_block size 0x200 to adr 0xcc00
+bdmlib_write_block size 0x200 to adr 0xce00
+bdmlib_write_block size 0x200 to adr 0xd000
+bdmlib_write_block size 0x200 to adr 0xd200
+bdmlib_write_block size 0x200 to adr 0xd400
+bdmlib_write_block size 0x200 to adr 0xd600
+bdmlib_write_block size 0x200 to adr 0xd800
+bdmlib_write_block size 0x200 to adr 0xda00
+bdmlib_write_block size 0x200 to adr 0xdc00
+bdmlib_write_block size 0x200 to adr 0xde00
+bdmlib_write_block size 0x200 to adr 0xe000
+bdmlib_write_block size 0x200 to adr 0xe200
+bdmlib_write_block size 0x200 to adr 0xe400
+bdmlib_write_block size 0x200 to adr 0xe600
+bdmlib_write_block size 0x200 to adr 0xe800
+bdmlib_write_block size 0x200 to adr 0xea00
+bdmlib_write_block size 0x200 to adr 0xec00
+bdmlib_write_block size 0x200 to adr 0xee00
+bdmlib_write_block size 0x200 to adr 0xf000
+bdmlib_write_block size 0x200 to adr 0xf200
+bdmlib_write_block size 0x200 to adr 0xf400
+bdmlib_write_block size 0x200 to adr 0xf600
+bdmlib_write_block size 0x200 to adr 0xf800
+bdmlib_write_block size 0x200 to adr 0xfa00
+bdmlib_write_block size 0x200 to adr 0xfc00
+bdmlib_write_block size 0x200 to adr 0xfe00
+bdmlib_write_block size 0x200 to adr 0x10000
+bdmlib_write_block size 0x200 to adr 0x10200
+bdmlib_write_block size 0x200 to adr 0x10400
+bdmlib_write_block size 0x200 to adr 0x10600
+bdmlib_write_block size 0x200 to adr 0x10800
+bdmlib_write_block size 0x200 to adr 0x10a00
+bdmlib_write_block size 0x200 to adr 0x10c00
+bdmlib_write_block size 0x200 to adr 0x10e00
+bdmlib_write_block size 0x200 to adr 0x11000
+bdmlib_write_block size 0x200 to adr 0x11200
+bdmlib_write_block size 0x200 to adr 0x11400
+bdmlib_write_block size 0x200 to adr 0x11600
+bdmlib_write_block size 0x200 to adr 0x11800
+bdmlib_write_block size 0x200 to adr 0x11a00
+bdmlib_write_block size 0x200 to adr 0x11c00
+bdmlib_write_block size 0x200 to adr 0x11e00
+bdmlib_write_block size 0x200 to adr 0x12000
+bdmlib_write_block size 0x200 to adr 0x12200
+bdmlib_write_block size 0x200 to adr 0x12400
+bdmlib_write_block size 0x200 to adr 0x12600
+bdmlib_write_block size 0x200 to adr 0x12800
+bdmlib_write_block size 0x200 to adr 0x12a00
+bdmlib_write_block size 0x200 to adr 0x12c00
+bdmlib_write_block size 0x200 to adr 0x12e00
+bdmlib_write_block size 0x200 to adr 0x13000
+bdmlib_write_block size 0x200 to adr 0x13200
+bdmlib_write_block size 0x1bc to adr 0x13400
+bdmlib_load_section:
+	section .data index 1
+	flags 0x243 raw_size 2796 cooked_size 0
+	vma 0x135bc lma 0x135bc output_offset 0
+bdmlib_write_block size 0x200 to adr 0x135bc
+bdmlib_write_block size 0x200 to adr 0x137bc
+bdmlib_write_block size 0x200 to adr 0x139bc
+bdmlib_write_block size 0x200 to adr 0x13bbc
+bdmlib_write_block size 0x200 to adr 0x13dbc
+bdmlib_write_block size 0xec to adr 0x13fbc
+bdmlib_load_section:
+	section .bss index 2
+	flags 0x1 raw_size 23720 cooked_size 0
+	vma 0x140a8 lma 0x140a8 output_offset 0
+bdmlib_load_section:
+	section .stab index 3
+	flags 0x10600 raw_size 73356 cooked_size 0
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 4
+	flags 0x10600 raw_size 29630 cooked_size 0
+	vma 0 lma 0 output_offset 0
+GDB: bdm_fetch_register 17
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_resume: pid -1 step=0, sig=6
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_fetch_register 17

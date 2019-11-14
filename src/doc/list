@@ -1,0 +1,63 @@
+a generic list system is implemented in basic/list.h
+
+there are two types, list and entry, list is a list of entries.
+
+entry looks like this:
+struct entry_s {
+list * list;
+entry * prev;
+entry * next;
+void * data;
+int len;
+} ;
+
+So, an entry knows to which list it belongs. the entry has a void pointer
+to carry the actual data. len is not used internally, but can be used to carry
+data that has varible length.
+
+
+a list looks like this:
+struct list_s
+{
+entry * head;
+entry * tail;
+int entries;
+};
+
+The following functions are provided:
+
+entry *head(list *l);
+	gets the head of a list
+
+entry *tail(list *l);
+	gets the tail of a list
+
+int entries(list *l);
+	returns the number of entries in l
+
+void list_init(list * l);
+	inits a list to empty. Effect on a non-empty list is undefined.
+
+void insert_after(entry * e,entry *x);
+	inserts entry e after entry x
+
+void insert_before(entry * e,entry *x);
+	inserts entry e before entry x
+
+void insert_head(list *l,entry *e);
+	inserts as head of list
+
+void insert_tail(list *l,entry *e);
+	inserts as tail of list
+
+void delete(entry *e);
+	deletes entry
+
+
+All the functions are "safe" in such a way that they just return without
+modifying the list whenever something impossible is requested, such as 
+removing an item from a list when it's not part of one or adding an item
+to a list when it's allready in another list. Which is another special.
+An entry can only be on one list at a time.
+
+

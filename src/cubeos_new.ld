@@ -1,0 +1,119 @@
+STARTUP(basic/crt0.o)
+OUTPUT_ARCH(m68k)
+
+GROUP(
+/opt/misc/m68kgcc/lib/gcc-lib/m68k-coff/2.8.1/m68000/msoft-float/libgcc.a
+/opt/misc/m68kgcc/m68k-cubeos-coff/lib/msoft-float/libc.a
+/opt/misc/m68kgcc/m68k-cubeos-coff/lib/msoft-float/libm.a
+)
+
+PROVIDE (__DYNAMIC  =  0);
+
+/*
+ * Setup the memory map of the M68332 bootmonitor
+ * stack grows down from CPU memory; bss section grows up from CPU memory
+ *
+ * The memory map look like this:
+ * +--------------------+ <- 0x0
+ * | .text              |
+ * |        _etext      |
+ * |        ctor list   | the ctor and dtor lists are for
+ * |        dtor list   | C++ support
+ * +--------------------+
+ * | .data              | initialized data goes here
+ * |        _edata      |
+ * +--------------------+
+ * | .bss               |
+ * |        __bss_start | start of bss, cleared by crt0
+ * |        _end        | start of heap, used by sbrk()
+ * +--------------------+
+ * .                    .
+ * .                    .
+ * .                    .
+ * |        __stack     | top of stack
+ * +--------------------+ <- end of cpu memory 0xf207fc
+ */
+MEMORY
+{
+  ram      : ORIGIN = 0x000000, LENGTH = 256K
+}
+
+/*
+ * allocate the stack to be at the top of memory, since the stack
+ * grows down
+ */
+
+PROVIDE (__stack = 0x03fffc);
+
+/*
+ * Just put everything into RAM
+ */
+SECTIONS
+{
+  .text :
+  {
+    *(.text)
+    . = ALIGN(0x4);
+     __CTOR_LIST__ = .;
+    ___CTOR_LIST__ = .;
+    LONG((__CTOR_END__ - __CTOR_LIST__) / 4 - 2)
+    *(.ctors)
+    LONG(0)
+    __CTOR_END__ = .;
+    __DTOR_LIST__ = .;
+   ___DTOR_LIST__ = .;
+    LONG((__DTOR_END__ - __DTOR_LIST__) / 4 - 2)
+    *(.dtors)
+     LONG(0)
+    __DTOR_END__ = .;
+    *(.rodata)
+    *(.gcc_except_table) 
+    *(.eh_fram)
+
+    __INIT_SECTION__ = . ;
+    LONG (0x4e560000)	/* linkw %fp,#0 */
+    *(.init)
+    SHORT (0x4e5e)	/* unlk %fp */
+    SHORT (0x4e75)	/* rts */
+
+    __FINI_SECTION__ = . ;
+    LONG (0x4e560000)	/* linkw %fp,#0 */
+    *(.fini)
+    SHORT (0x4e5e)	/* unlk %fp */
+    SHORT (0x4e75)	/* rts */
+
+    _etext = .;
+    *(.lit)
+  } > ram
+
+  .data :
+  {
+    __data_start = . ;
+    *(.shdata)
+    *(.data)
+    _edata = .;
+  } > ram
+
+  .bss :
+  {
+    . = ALIGN(0x4);
+    __bss_start = . ;
+    *(.shbss)
+    *(.bss)
+    *(COMMON)
+    _end =  ALIGN (0x8);
+    __end = _end;
+  } > ram
+
+  .stab 0 (NOLOAD) :
+  {
+    *(.stab)
+  }
+
+  .stabstr 0 (NOLOAD) :
+  {
+    *(.stabstr)
+  }
+}
+
+

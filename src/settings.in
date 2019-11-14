@@ -1,0 +1,5 @@
+INCLUDES += -I$(PREFIX)/basic -I$(PREFIX)/hardware -I$(PREFIX)/drivers -I$(PREFIX)/drivers/tpu -I$(PREFIX)/drivers/i2c -I$(PREFIX)/drivers/fastbin -I$(PREFIX)/init -I$(PREFIX)/net
+CFLAGS+= $(INCLUDES) -gcoff 
+SFLAGS+= $(INCLUDES) -gcoff 
+AFLAGS= -I$(PREFIX)/basic -I$(PREFIX)/hardware 
+LINKSCRIPT=$(PREFIX)/cubeos.ld_sun

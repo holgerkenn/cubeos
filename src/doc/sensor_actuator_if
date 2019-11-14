@@ -1,0 +1,262 @@
+the SAI is implemented in
+drivers/sai.h drivers sai_cube.h drivers/sai.c drivers/sai_cube.c
+
+sai.h defines a structure called sa_entry which contains all the information
+needed to access one sensor/actuator. It contains handler functions
+for read, write and control and a sa-dependend parameterblock iop.
+
+to acces a sa, it's sa_entry structure location has to be known. Then,
+the functions 
+int sa_read(struct sa_entry *x)  
+int sa_write(struct sa_entry *x, int value)
+int sa_control(struct sa_entry*x,int function, int value)
+can be used to control the device. read and write are generic and 
+should "do the expected", so setting a motor speed or reading a 
+sensor value. control is used for specific function of the devices,
+as setting PWM frequency for motors or setting sensitivity for sensors.
+
+sai_cube.h defines a global structure called RoboCube, which contains
+the sa_entry structures for the cube's sensors and actuators. To access a
+device, the appropriate address of a sa_entry has to be generated from
+the RoboCube struct.
+
+"samrt" #defines add the possobility of using MOTOR1 instead of
+&RoboCube.tpu[6]
+
+Both the RoboCube structure and the #defines are application and hardware
+dependent, whereas the sa_xxx functions are generic, therefore
+being held in different .h and .c files
+
+sai_cube.c contains a init_sai_cube() function which sets up the entries
+for the RoboCube structure. This is provided to allow automatic detection
+of hardware features later on.
+
+Each device directory contains a sai_device.c and .h file which contains
+the device-specific read-, write- and control-handlers with their
+#defines. They also contain a device-specific init routine which is called
+from sai_cube.c's init_sai_cube. 
+
+How to work with the SAI:
+
+1. as an user
+
+sai uses the RoboCube structure to present the cube's hardware to the user.
+To use it, the user has to #include <sai_cube.h> which in turn includes
+the necessary global and device-specific headers.
+
+Before using one of the sai functions, the user has to call
+sai_init_cube to set up the system and initialize the hardware drivers.
+
+After that, the user can use the generic sa_read sa_write and sa_control
+functions to any device entry contained in the RoboCube structure.
+
+the sa_ functions take a pointer to an sa_entry structure as first parameter,
+so use the & operator to make pointers out of the static entries in RoboCube.
+
+(Later on it might be changed towards pointers. We'll see)
+
+Let's give an example. Set up TP channel 6 as a PWM output
+
+init_sai_cube(); 
+
+sa_control(&RoboCube.tpu[6],CTL_TPU_SETFUNCTION,TPU_FKT_PWM);
+
+sa_control(&RoboCube.tpu[6],CTL_TPU_SETPWMPERIOD,32000);
+
+sa_write(&RoboCube.tpu[6],16000)
+
+
+To avoid all that typing, the user might set up the following "samrt"
+defines to simplify life a bit:
+
+#define MOTOR1 &RoboCube.tpu[6]
+#define MOTOR1PERIOD MOTOR1,CTL_TPU_SETPWMPERIOD
+#define MOTOR1SETUP MOTOR1,CTL_TPU_SETFUNCTION,TPU_FKT_PWM
+
+So the last two lines then look like this:
+
+sa_control(MOTOR1SETUP);
+sa_control(MOTOR1PERIOD,32000);
+sa_write(MOTOR1,16000);
+
+which is much easier to read for a human.
+
+Note that the function (Motor Control) is now separated from the 
+device and connection point (TP Channel 6 in function PWM)
+
+By separating the #defines and the function calls in two different files,
+the program can be split into a hardware-dependent and a hardware-independent 
+part.
+
+
+2. as a power user
+
+Sometimes, the provided hardware i/o functions for the RoboCube are not enough 
+for solving a problem. Then, new hardware devices have to be added to one
+of the cube's IO Bus systems. One possible example are additional
+devices added to one of the i2c busses. 
+
+
+When there's a new device on the i2c bus, a new sa_entry structure has to be
+filled with the device-specific functions.
+
+struct sa_entry myi2cdevice;
+
+struct iop_i2cs * iopp;
+
+(for devices with more than one function, it might make sense to have more
+than one sa_entry structure for them.)
+
+Then, the structure has to be filled. Let's consider first a simple 
+i2c device that can be read and written. The handlers for these functions are
+provided:
+
+myi2cdevice.readhandler = i2csreadhandler;
+myi2cdevice.writehandler = i2cswritehandler;
+myi2cdevice.controlhandler = i2csreadhandler;
+
+sa_entry contains a structure called iop. iop is a generic placeholder
+structure, so we're going to use the device specific version instead.
+That's struct iop_i2cs for simple i2c devices.
+
+iopp = (struct iop_i2cs *) &(myi2cdevice.iop)
+
+Then we fill that structure.
+
+First, we have to decide upon the bus that the device is going to be connected
+to, in this case Bus B:
+
+iopp->major = MAJ_I2CB;  
+
+Then we fill in the device's i2c adress. Use the even adress (for read) here.
+
+iopp->minor = 0x8E;
+
+How long (how many bytes) are the messages to the i2c device going to be? 
+We can use 1 to 4 bytes, leading to char to long variables being used for the
+transfer. Let's use bytes for simplicity, and let's use the same size for read
+and write:
+
+iopp->nrread = 1;
+iopp->nrwrite = 1;
+
+That's it. Now we can use the device for read and write operations like this:
+
+init_sai_cube();
+
+sa_write(&myi2cdevice,0x00);
+x = sa_read(&myi2cdevice);
+
+The device driver takes care of the rest.
+
+3. Hardware developers
+
+Now, we're talking about people who are extending the cube's hardware in
+a way that they're extending the cube to support whole new type of device
+interfaces. For example, memory mapped IO devices like framegrabbers,
+new bus interfaces etc.
+
+These actions go well beyond a simple user program and are considered as
+new drivers in the cubeos source. 
+
+First of all, make a new directory with a usefull sounding name under
+drivers in the source tree.
+
+for example drivers/frameg
+
+Then implement the low level access routines for your hardware in a file
+in this directroy, let's say in
+
+drivers/frameg/frameg.c
+
+and export the necessary data structures in 
+
+drivers/frameg/frameg.h
+
+Then, when the real work's finished (and tested of course),
+the interfacing to the sai is very simple. 
+
+First, generate a header file
+
+drivers/sai_frameg.h
+
+which might look like this:
+
+/* framegrabber sai device interface */
+#ifndef _SAI_FRAMEG_H
+#define _SAI_FRAMEG_H
+
+#include <sai.h> /* for struct iop */
+
+struct iop_frameg
+{
+char MAJOR; /* new major number for new device */
+int minor; /* only one framegrabber ? */
+short height;
+short width;
+int pixel;
+char fill[IOPARAMSIZE-9];
+}
+
+#define CTL_FRAMEG_RESET 0x0;
+#define CTL_FRAMEG_START 0x1;
+#define CTL_FRAMEG_STOP  0x2;
+#define CTL_FRAMEG_SETH  0x3;
+#define CTL_FRAMEG_SETW  0x4;
+
+int frameg_writehandler(struct iop * iop, int value);
+int frameg_readhandler(struct iop * iop);
+int frameg_controlhandler(struct iop * iop, int control,int value);
+int init_sai_frameg();
+
+#endif /* of the wrapper ifndef */
+
+This defines the interface application programs are allowed to see.
+
+Then, you have to implement the read, write and control handlers
+
+The write handler for a framegrabber is simple:
+
+int frameg_writehandler(struct iop * iop, int value)
+{
+return SA_FAIL;
+}
+
+Writing obviously makes no sense for framegrabbers.
+
+next is the read handler. This is more complicated, since a frame grabber
+cannot be read as a whole.
+
+Let's give it a try.
+
+int frameg_readhandler(struct iop *)
+{
+void * start;
+
+/* this is just for safety reasons, should never happen when we're 
+initialized propperly */
+
+switch (((struct iop_frameg *)iop)->major)
+        {
+        case MAJ_FRAMEG:
+                break;
+        default:
+                return SA_FAIL;
+        }
+
+
+
+/* This is the handler for multiple devices. */
+switch (((struct iop_frameg *)iop)->minor)
+        {
+        case 0:
+		start=0xe0000;
+                break;
+        default:
+                return SA_FAIL;
+        }
+
+
+and so on...
+
+

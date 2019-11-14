@@ -1,0 +1,13 @@
+int TPU_init();
+int TPU_makepwm(unsigned char nr);
+int TPU_initchannel(unsigned char nr);
+int TPU_setpwmperiod(unsigned char nr, unsigned short period);
+int TPU_setpwmdc(unsigned char nr, unsigned char hightime);
+int TPU_makepac(unsigned char nr);
+int TPU_MeasurePulseWidth(unsigned char nr,unsigned char rate);
+int TPU_makeHigh(unsigned char nr);
+long TPU_getPulseWidth(unsigned char nr);
+int TPU_make40kwave(unsigned char nr);
+
+
+unsigned short TPU_getpac(unsigned char nr);

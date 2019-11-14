@@ -1,0 +1,83 @@
+
+cube/sbrk.c	needs fix for memory size, eventually get it from the monitor ?
+
+cube/debug.h	sounds like a great idea...
+	basic/kerror.c complain()
+
+generic serial driver for all three channels.
+POSTPONED. Interface for radiolink in basic/io_duart.c
+ctrl-c interface for current console instead of duart B
+
+drivers/spi ?
+
+sigalarm for radio protocol.
+	how to interrupt "stuck" syscalls with a timer?
+	how to do without trashing the stack? (farjump is not quite good)
+	Timer-Check inside the blocking syscalls?
+	select() mechanics???
+
+	"Message passing" (more like signals) from xinu, 
+	second thread which performs sleep wait on timer, 
+	sends message on timeout. communication thread sends message
+	upon new packet arrival. first thread just sleeps on message wait.
+	Depending on which messare arrives first, packet is either resend or
+	incoming packet is received. 
+
+messagepassing for threads. Probably the SYSV ipc from Linux?
+	use basic/list.h to make msg reception queues for each thread
+	How to handle overflows/non responding threads (WinDoze problem)?
+		Timer/SigAlarm-like handlling?
+		Drop lastin/firstin?
+		force to use sigmsg handler?
+	fixed numer of messages preallocated held in a empty list?
+		how efficient is memory handeling in glibc?
+		fixed length of messages when preallocated?
+
+
+semaphores really atomic ? maybe mutexes with test-set command ?
+or disabeling irqs to make ops atomic?
+	basic/cubeos.h contains some code. Not tested
+
+cube/kill.c signals for threads besides sigkill (btw: dows this work?)
+cube/wait.c cube/signal.c, should there be basic/signal.c ?
+
+basic/schedule.c needs something a lot smarter.
+
+basic/schedule.c needs handler for sigalarm
+
+interface for clock. Battery-buffered i2c RT-Clock ?
+
+Flash FS for cubeos & bootmon.
+	->Thomas
+
+using more inline functions 
+
+function to set/change irq level for functions. Up 'till now always set
+to 0x0
+
+we have to find a nice way to generate the main makefile. Maybe 
+we should start with a new hierarchic make file architecture.
+
+the scheduler has to be rewritten to a queue-based system instead of a 
+array-based system. 
+	first atempt failed.
+
+semaphores have to suspend the tasks waiting.
+	linked list of threads waiting for semaphore?
+	run on first come/first serve or priority ?
+
+sleep function for tasks, impl. with a delta-queue
+
+signal handlers to be called in the second half of schedule
+
+move the kill handler from the first half of schedule to the second half.
+
+sai is not flexible enough, return values are limited to int.
+	read and write should work on data buffers to handle flexible data.
+	timestamping for sensor data?
+	maybe everything in c++?
+
+i2c if for digital and analog i/o is still missing the write part.
+
+i2c if is wasting maximum amount of available adresses for data structures.
+

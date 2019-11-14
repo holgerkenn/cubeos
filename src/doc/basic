@@ -1,0 +1,59 @@
+basic cubeos infrastructure.
+
+by including <cubeos.h>, you get:
+
+void enable();
+void disable(); functions for controlling interrupts
+
+Semaphores:
+
+sem_t s;
+
+sem_post(s),sem_signal(s) 
+	Signals Semaphore
+
+sem_wait(s)	
+	Waits for signal
+
+sem_trywait(s)
+	would sem_wait(s) block?
+sem_getvalue(s,i)
+	get current value of s into i (for posix compliance)
+
+sem_init(s,i,v) 
+	s=v; for posix compliance
+sem_destroy(s)
+	nop; for posix compliance
+
+Mutexes: implemented as semaphores
+
+mutex m;
+
+mutex_init(m);
+	Must be called before using
+
+mutex_enter(m);
+	Enter mutex section
+
+mutex_leave(m);
+	Leave mutex section
+
+
+Memory access routines
+
+readbyte(x) like basic's peek(x), 8 bits
+writebyte(x,y) like basic's poke x,y
+
+readshort(x), 16 bits
+writeshort(x,y)
+
+readint(x), 32 bits
+writeint(x,y)
+
+writeshortpos(x,y,mask,pos) Writes the lower bits from y masked by mask
+and shifted left pos times to the location x.
+
+readshortpos(x,mask,pos) reads the masked bits in memory localtion x from 
+position pos on to the right and returns the result.
+
+

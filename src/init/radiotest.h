@@ -1,0 +1,2 @@
+int RadioTestRx();
+int RadioTestTx();
