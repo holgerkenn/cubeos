@@ -10,7 +10,7 @@
 
 #define BB      0x01    /* i2c bus busy */
 #define LAB     0x02    /* lost arbitration */
-#define AAS     0x04    /* Addressed as slave */
+#define AAS     0x04    /* Addressed as FOLLOWER */
 #define LRB     0x08    /* last received bit */
 #define BER     0x10    /* bus error */
 #define STS     0x20    /* stop condition detected */

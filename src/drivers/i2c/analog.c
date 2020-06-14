@@ -21,7 +21,7 @@ int ReadAnalogIn (int chip, int channel)
 	analog_m.nrBytes = 1;
 	analog_m.buf = analog_mbuf;
 	analog_mbuf[0] = (ad_data[chip].status & 0x70) | (channel & 0x03);	/* no autoincrement */
-	process_i2c (ad_data[chip].bus, I2C_MASTER, &analog_m);
+	process_i2c (ad_data[chip].bus, I2C_LEADER, &analog_m);
 
 /* read value */
 	analog_m.address = ad_data[chip].address | 0x1;		/* Read adress */
@@ -31,7 +31,7 @@ int ReadAnalogIn (int chip, int channel)
 	analog_m.buf = analog_mbuf;
 
 
-	process_i2c (ad_data[chip].bus, I2C_MASTER, &analog_m);
+	process_i2c (ad_data[chip].bus, I2C_LEADER, &analog_m);
 
 	return ((int) (((unsigned int) analog_mbuf[1]) & 0xff));
 
@@ -50,7 +50,7 @@ int ConfigureAnalog (int chip, char how)
 	analog_m.nrBytes = 1;
 	analog_m.buf = analog_mbuf;
 	analog_mbuf[0] = (ad_data[chip].status);
-	process_i2c (ad_data[chip].bus, I2C_MASTER, &analog_m);
+	process_i2c (ad_data[chip].bus, I2C_LEADER, &analog_m);
 
 	return (analog_m.status == I2C_OK);
 }
@@ -68,7 +68,7 @@ int WriteAnalogOut (int chip, int value)
 	analog_m.buf = analog_mbuf;
 	analog_mbuf[0] = (ad_data[chip].status);
 	analog_mbuf[1] = value & 0xff;
-	process_i2c (ad_data[chip].bus, I2C_MASTER, &analog_m);
+	process_i2c (ad_data[chip].bus, I2C_LEADER, &analog_m);
 
 	return (analog_m.status == I2C_OK);
 }
@@ -100,7 +100,7 @@ int init_analog ()
 		analog_m.nrBytes = 1;	/* Read one false byte, then read value */
 		analog_mbuf[0] = 0;	/* clear buffer */
 		analog_m.buf = analog_mbuf;
-		process_i2c (ad_data[adnum].bus, I2C_MASTER, &analog_m);
+		process_i2c (ad_data[adnum].bus, I2C_LEADER, &analog_m);
 
 
 		switch (analog_m.status) {

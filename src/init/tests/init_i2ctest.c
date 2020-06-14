@@ -23,7 +23,7 @@ int main ()
 	mvalue[3] = 'l';
 	mvalue[4] = 'o';
 	mvalue[5] = '\0';
-	process_i2c (I2CA, I2C_MASTER, &ma);
+	process_i2c (I2CA, I2C_LEADER, &ma);
 	printf ("write to I2CB: %s (%d)\r\n", mvalue, ma.procBytes);
 
 	sl.address = 0x1;
@@ -34,8 +34,8 @@ int main ()
 	svalue[0] = 'o';
 	svalue[0] = 'p';
 	svalue[0] = '\0';
-	process_i2c (I2CB, I2C_SLAVE, &sl);
-	printf ("read slave I2CB: %s (%d)\r\n", svalue, sl.procBytes);
+	process_i2c (I2CB, I2C_FOLLOWER, &sl);
+	printf ("read FOLLOWER I2CB: %s (%d)\r\n", svalue, sl.procBytes);
 
 	printf ("End program\r\n");
 	return (0);

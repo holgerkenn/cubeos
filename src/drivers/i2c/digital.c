@@ -24,7 +24,7 @@ unsigned char ReadBinIn (int chip)
 	digital_m.buf = digital_mbuf;
 
 
-	process_i2c (bin_data[chip].bus, I2C_MASTER, &digital_m);
+	process_i2c (bin_data[chip].bus, I2C_LEADER, &digital_m);
 
 	return digital_mbuf[0];
 
@@ -42,7 +42,7 @@ int WriteBinOut (int chip, unsigned char value)
 	digital_mbuf[0] = value;
 	digital_m.buf = digital_mbuf;
 
-	process_i2c (bin_data[chip].bus, I2C_MASTER, &digital_m);
+	process_i2c (bin_data[chip].bus, I2C_LEADER, &digital_m);
 
 	return (digital_m.status == I2C_OK);
 
@@ -80,7 +80,7 @@ int init_digital ()
 		digital_m.nrBytes = 1;	/* Read one false byte, then read value */
 		digital_mbuf[0] = 0;	/* clear buffer */
 		digital_m.buf = digital_mbuf;
-		process_i2c (bin_data[binnum].bus, I2C_MASTER, &digital_m);
+		process_i2c (bin_data[binnum].bus, I2C_LEADER, &digital_m);
 
 
 		switch (digital_m.status) {

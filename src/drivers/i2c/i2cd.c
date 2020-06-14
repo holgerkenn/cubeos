@@ -9,7 +9,7 @@ struct i2c i2c[2];
 
 static void GenerateStop (struct i2c *p, unsigned char mess)
 {
-	p->m_state = MASTER_IDLE;
+	p->m_state = LEADER_IDLE;
 	p->m_buff[p->m_tail]->status = mess;	/* still ptr of finished msg */
 	p->m_buff[p->m_tail]->procBytes = p->m_dcnt;
 	if (++p->m_tail >= MBUFLEN)
@@ -20,13 +20,13 @@ static void GenerateStop (struct i2c *p, unsigned char mess)
 	/* check for further entries in output buffer */
 
 	if (p->m_cnt == 0) {
-		p->mode = I2C_SLAVE_MODE;
+		p->mode = I2C_FOLLOWER_MODE;
 	} else {
 		(p->m_state_handler) (p);
 	}
 }
 
-void i2c_master_handler (struct i2c *p)
+void i2c_LEADER_handler (struct i2c *p)
 {
 	struct i2c_device *dev;
 	struct i2cmess *msg;
@@ -37,13 +37,13 @@ void i2c_master_handler (struct i2c *p)
 	msg = p->m_buff[p->m_tail];
 
 	switch (p->m_state) {
-	case MASTER_IDLE:
+	case LEADER_IDLE:
 		timeoutcnt = I2C_TIMEOUT_VAL;
 		while (!(dev->control & BB) && timeoutcnt--);	/* wait until bus
 								   free */
 		if (timeoutcnt) {
 			p->m_dcnt = 0;
-			p->m_state = (msg->address & 1) ? MASTER_WAIT_ACK : MASTER_SEND;
+			p->m_state = (msg->address & 1) ? LEADER_WAIT_ACK : LEADER_SEND;
 			dev->data = msg->address;
 			dev->control = PIN | ESO | ENI | STA | ACK;	/* generate
 									   start */
@@ -51,11 +51,11 @@ void i2c_master_handler (struct i2c *p)
 			GenerateStop (p, I2C_TIME_OUT);
 		}
 		return;
-	case MASTER_SEND:
+	case LEADER_SEND:
 		if (dev->control & LAB) {	/* arbitration was lost */
-			p->mode = I2C_SLAVE_MODE;
-			(p->s_state_handler) (p);	/* check if addressed as slave */
-			p->mode = I2C_MASTER_MODE;
+			p->mode = I2C_FOLLOWER_MODE;
+			(p->s_state_handler) (p);	/* check if addressed as FOLLOWER */
+			p->mode = I2C_LEADER_MODE;
 			GenerateStop (p, I2C_ARBITRATION_LOST);		/* leave the bus */
 			return;
 		}
@@ -70,11 +70,11 @@ void i2c_master_handler (struct i2c *p)
 			GenerateStop (p, I2C_OK);	/* transfer ready */
 		}
 		break;
-	case MASTER_WAIT_ACK:
+	case LEADER_WAIT_ACK:
 		if (dev->control & LAB) {	/* arbitration was lost */
-			p->mode = I2C_SLAVE_MODE;
-			(p->s_state_handler) (p);	/* check if addressed as slave */
-			p->mode = I2C_MASTER_MODE;
+			p->mode = I2C_FOLLOWER_MODE;
+			(p->s_state_handler) (p);	/* check if addressed as FOLLOWER */
+			p->mode = I2C_LEADER_MODE;
 			GenerateStop (p, I2C_ARBITRATION_LOST);		/* leave the bus */
 			return;
 		}
@@ -83,23 +83,23 @@ void i2c_master_handler (struct i2c *p)
 			GenerateStop (p, I2C_NACK_ON_ADDRESS);
 		} else {
 			if (msg->nrBytes == 1) {
-				p->m_state = MASTER_RECV_LAST;
+				p->m_state = LEADER_RECV_LAST;
 				dev->control = ESO | ENI;
 			} else {
-				p->m_state = MASTER_RECV;
+				p->m_state = LEADER_RECV;
 			}
 			dummy = dev->data;	/* start generation of clock pulses for the
 						   first byte to read        */
 		}
 		break;
-	case MASTER_RECV:
+	case LEADER_RECV:
 		if (p->m_dcnt + 2 == msg->nrBytes) {
 			dev->control = ESO | ENI;	/* clear ACK */
-			p->m_state = MASTER_RECV_LAST;
+			p->m_state = LEADER_RECV_LAST;
 		}
 		msg->buf[p->m_dcnt++] = dev->data;
 		break;
-	case MASTER_RECV_LAST:
+	case LEADER_RECV_LAST:
 		dev->control = PIN | ESO | ENI | STO | ACK;
 		msg->buf[p->m_dcnt++] = dev->data;
 		GenerateStop (p, I2C_OK);	/* transfer ready */
@@ -110,51 +110,51 @@ void i2c_master_handler (struct i2c *p)
 	}
 }
 
-void i2c_slave_handler (struct i2c *p)
+void i2c_FOLLOWER_handler (struct i2c *p)
 {
 	register struct i2c_device *dev;
 
 	dev = p->ioaddr;
 
 	switch (p->s_state) {
-	case SLAVE_IDLE:
-		if (dev->control & AAS) {	/* addressed as slave ? */
-			if (dev->data & 1) {	/* slave transmitter */
-				p->s_state = SLAVE_SEND;
-			} else {	/* slave receiver */
+	case FOLLOWER_IDLE:
+		if (dev->control & AAS) {	/* addressed as FOLLOWER ? */
+			if (dev->data & 1) {	/* FOLLOWER transmitter */
+				p->s_state = FOLLOWER_SEND;
+			} else {	/* FOLLOWER receiver */
 				if (p->s_icnt >= SBUFLEN) {
-					p->s_status |= I2C_SLAVE_IBUF_OVERFLOW;
+					p->s_status |= I2C_FOLLOWER_IBUF_OVERFLOW;
 					dev->control = PIN | ESO | ENI;
 					sem_signal (p->s_isem);
 				} else {
-					p->s_state = SLAVE_RECV;
+					p->s_state = FOLLOWER_RECV;
 				}
 			}
 		} else {	/* clear interupt */
 			dev->control = PIN | ESO | ENI;
 		}
 		return;
-	case SLAVE_SEND:
-		if (dev->control & LRB) {	/* no ack from master */
-			p->s_state = SLAVE_IDLE;
+	case FOLLOWER_SEND:
+		if (dev->control & LRB) {	/* no ack from LEADER */
+			p->s_state = FOLLOWER_IDLE;
 			sem_signal (p->s_osem);
 		}
 		if (p->s_ocnt == 0) {
 			dev->data = 0xff;
-			p->s_status |= I2C_SLAVE_OBUF_EMPTY;
+			p->s_status |= I2C_FOLLOWER_OBUF_EMPTY;
 		} else {
 			dev->data = p->s_obuff[p->s_optr++];
 			p->s_ocnt--;
 		}
 		return;
-	case SLAVE_RECV:
+	case FOLLOWER_RECV:
 		if (dev->control & STS) {	/* STOP detected */
-			p->s_state = SLAVE_IDLE;
+			p->s_state = FOLLOWER_IDLE;
 			dev->control = PIN | ESO | ENI | ACK;
 			sem_signal (p->s_isem);
 		} else if (p->s_icnt == SBUFLEN) {
 			dev->control = PIN | ESO | ENI;		/* clear ACK */
-			p->s_state = SLAVE_IDLE;
+			p->s_state = FOLLOWER_IDLE;
 			sem_signal (p->s_isem);
 		} else {
 			p->s_ibuff[p->s_iptr++] = dev->data;
@@ -163,7 +163,7 @@ void i2c_slave_handler (struct i2c *p)
 		return;
 	default:
 		dev->control = PIN | ESO | ENI | ACK;	/* clear interrupt */
-		p->s_status |= I2C_SLAVE_ERR;
+		p->s_status |= I2C_FOLLOWER_ERR;
 		return;
 	}
 }
@@ -174,10 +174,10 @@ void i2c_int_handler (unsigned long minor)
 	struct i2c *p;
 
 	p = &i2c[minor];
-	if (p->mode == I2C_MASTER_MODE)
-		(p->m_state_handler) (p);	/* Master Mode */
+	if (p->mode == I2C_LEADER_MODE)
+		(p->m_state_handler) (p);	/* LEADER Mode */
 	else
-		(p->s_state_handler) (p);	/* Slave Mode  */
+		(p->s_state_handler) (p);	/* FOLLOWER Mode  */
 }
 
 void i2c_init (int which, unsigned long ioaddr)
@@ -223,14 +223,14 @@ void i2c_init (int which, unsigned long ioaddr)
 
 	/* fill i2c control blk       */
 	iptr->ioaddr = (struct i2c_device *) ioaddr;	/* chip address */
-	iptr->mode = I2C_SLAVE_MODE;
+	iptr->mode = I2C_FOLLOWER_MODE;
 	iptr->m_head = iptr->m_tail = 0;	/* empty input queue */
 	/* iptr->m_isem = screate(0); */
 	iptr->m_sem = MBUFLEN;
 	iptr->m_cnt = 0;
 	iptr->m_dcnt = 0;
-	iptr->m_state_handler = &i2c_master_handler;
-	iptr->m_state = MASTER_IDLE;
+	iptr->m_state_handler = &i2c_LEADER_handler;
+	iptr->m_state = LEADER_IDLE;
 
 	iptr->s_iptr = 0;
 	iptr->s_isem = 0;
@@ -238,17 +238,17 @@ void i2c_init (int which, unsigned long ioaddr)
 	iptr->s_optr = 0;
 	iptr->s_osem = 0;
 	iptr->s_ocnt = 0;
-	iptr->s_state_handler = &i2c_slave_handler;
-	iptr->s_state = SLAVE_IDLE;
+	iptr->s_state_handler = &i2c_FOLLOWER_handler;
+	iptr->s_state = FOLLOWER_IDLE;
 	iptr->s_status = 0;
 
 	/* set up the chip */
 	chip = iptr->ioaddr;
 	chip->control = 0x80;	/* software reset            */
 	if (which == I2CA)
-		chip->data = I2CA_SLAVE_ADDR;	/* write own slave address   */
+		chip->data = I2CA_FOLLOWER_ADDR;	/* write own FOLLOWER address   */
 	else
-		chip->data = I2CB_SLAVE_ADDR;	/* write own slave address   */
+		chip->data = I2CB_FOLLOWER_ADDR;	/* write own FOLLOWER address   */
 	chip->control = 0xa0;	/* write clock register      */
 	chip->data = I2C_SPEED;
 	chip->control = PIN | ESO | ENI | ACK;	/* enable i2c bus interface  */
@@ -275,8 +275,8 @@ int Start_I2C_Transfer (unsigned char which, struct i2cmess *msg)
 		hdl->m_head = 0;
 
 	/* Start Transfer if necessary */
-	if ((hdl->mode == I2C_SLAVE_MODE) && (hdl->s_state == SLAVE_IDLE)) {
-		hdl->mode = I2C_MASTER_MODE;
+	if ((hdl->mode == I2C_FOLLOWER_MODE) && (hdl->s_state == FOLLOWER_IDLE)) {
+		hdl->mode = I2C_LEADER_MODE;
 		disable ();
 		(hdl->m_state_handler) (hdl);	/* handler returns here */
 		enable ();
@@ -312,7 +312,7 @@ int Start_I2C_Transfer (unsigned char which, struct i2cmess *msg)
 
 }
 
-int Process_I2C_Slave (unsigned char which, struct i2cmess *msg)
+int Process_I2C_FOLLOWER (unsigned char which, struct i2cmess *msg)
 {
 	struct i2c *hdl;
 	int i;
@@ -338,9 +338,9 @@ int Process_I2C_Slave (unsigned char which, struct i2cmess *msg)
 		hdl->s_iptr = 0;
 		if (hdl->s_status == 0)
 			msg->status = I2C_OK;
-		if (hdl->s_status & I2C_SLAVE_IBUF_OVERFLOW) {
+		if (hdl->s_status & I2C_FOLLOWER_IBUF_OVERFLOW) {
 			msg->status = I2C_ERR;
-			hdl->s_status &= ~I2C_SLAVE_IBUF_OVERFLOW;
+			hdl->s_status &= ~I2C_FOLLOWER_IBUF_OVERFLOW;
 		}
 		enable ();
 	} else {		/* write */
@@ -357,9 +357,9 @@ int Process_I2C_Slave (unsigned char which, struct i2cmess *msg)
 		hdl->s_optr = 0;
 		if (hdl->s_status == 0)
 			msg->status = I2C_OK;
-		if (hdl->s_status & I2C_SLAVE_OBUF_EMPTY) {
+		if (hdl->s_status & I2C_FOLLOWER_OBUF_EMPTY) {
 			msg->status = I2C_ERR;
-			hdl->s_status &= ~I2C_SLAVE_OBUF_EMPTY;
+			hdl->s_status &= ~I2C_FOLLOWER_OBUF_EMPTY;
 		}
 		enable ();
 	}
@@ -368,10 +368,10 @@ int Process_I2C_Slave (unsigned char which, struct i2cmess *msg)
 
 int process_i2c (unsigned char whichBus, unsigned char whichQueue, struct i2cmess *msg)
 {
-	if (whichQueue == I2C_MASTER)
+	if (whichQueue == I2C_LEADER)
 		return Start_I2C_Transfer (whichBus, msg);
 	else
-		return Process_I2C_Slave (whichBus, msg);
+		return Process_I2C_FOLLOWER (whichBus, msg);
 }
 
 int i2c_messagestatus (struct i2cmess *msg)
@@ -397,7 +397,7 @@ int i2c_messagestatus (struct i2cmess *msg)
 		return (-1);
 		break;
 	case I2C_ERR:
-		printf ("I2C: master handler in strange state\n");
+		printf ("I2C: LEADER handler in strange state\n");
 		return (-1);
 		break;
 	default:
@@ -425,7 +425,7 @@ int i2c_scanbus (unsigned char bus)
 		for (j = 0; j < 10; j++)
 			buf[j] = 0;
 
-		ret = process_i2c (bus, I2C_MASTER, &msg);
+		ret = process_i2c (bus, I2C_LEADER, &msg);
 
 		switch (msg.status) {
 		case I2C_OK:

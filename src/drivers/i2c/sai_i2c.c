@@ -46,7 +46,7 @@ int i2cs_writehandler (struct iop *iop, int value)
 	m.nrBytes = ((struct iop_i2c *) iop)->nrwrite;
 	/* nr of bytes expected from target */
 	m.buf = mbuf;
-	process_i2c (bus, I2C_MASTER, &m);
+	process_i2c (bus, I2C_LEADER, &m);
 
 	return SA_OK;
 }
@@ -73,7 +73,7 @@ int i2cs_readhandler (struct iop *iop)
 	m.nrBytes = ((struct iop_i2c *) iop)->nrread;
 	/* nr of bytes expected from target */
 	m.buf = mbuf;
-	process_i2c (bus, I2C_MASTER, &m);
+	process_i2c (bus, I2C_LEADER, &m);
 	switch (((struct iop_i2c *) iop)->nrread) {
 	case 1:
 		return mbuf[0];
@@ -145,7 +145,7 @@ int i2cc_writehandler (struct iop *iop, int value)
 	m.buf = mbuf;
 
 	printf ("I2C buffer = %X %X %X.\n", mbuf[0], mbuf[1], mbuf[2]);
-	process_i2c (bus, I2C_MASTER, &m);
+	process_i2c (bus, I2C_LEADER, &m);
 	printf ("I2C procBytes = %d...", m.procBytes);
 	printf ("I2C status = %d.\n", m.status);
 
@@ -186,7 +186,7 @@ int i2cc_readhandler (struct iop *iop)
 	m.buf = mbuf;
 	mbuf[0] = (unsigned char) (((struct iop_i2cc *) iop)->rcommand);
 
-	process_i2c (bus, I2C_MASTER, &m);
+	process_i2c (bus, I2C_LEADER, &m);
 //printf("Write procBytes = %d, status = %d.\n", m.procBytes, m.status);
 
 	printf ("Write succesfull, now reading\n");
@@ -201,7 +201,7 @@ int i2cc_readhandler (struct iop *iop)
 		mbuf[i] = 1;
 
 	m.buf = mbuf;
-	process_i2c (bus, I2C_MASTER, &m);
+	process_i2c (bus, I2C_LEADER, &m);
 //printf("I2C procBytes = %d.\n", m.procBytes);
 	// printf("I2C mbuf = %X %X.\n", m.buf[0], m.buf[1]);
 	printf ("I2C status after read = %d.\n", m.status);
